@@ -18,45 +18,48 @@
         line-height: 1.6;
     }
 
-    header {
-        background-image: url('background 4.jpg');
-        background-size: cover;
-        background-position: center;
-        color: white;
-        text-align: center;
-        padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        position: relative;
-        height: 100vh; /* Make the header cover the full viewport height */
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start; /* Start from the top */
-        animation: moveDown 2s forwards; /* Add animation */
-    }
+   header {
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    height: 100vh; /* Make the header cover the full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Start from the top */
+}
 
-    header h1 {
-        font-size: 4rem; /* Increase the font size for "AGRIVISION" */
-        margin-bottom: 0.5rem;
-        opacity: 0; /* Start hidden for animation */
-        animation: fadeIn 1s forwards 0.5s; /* Fade-in effect after moving */
-    }
+header h1 {
+    font-size: 4rem; /* Increase the font size for "AGRIVISION" */
+    margin-bottom: 0.5rem;
+    opacity: 0; /* Start hidden for animation */
+    position: relative;
+    animation: moveLeftToCenter 2s forwards, fadeIn 1s forwards 0.5s; /* Add animation */
+}
 
-    @keyframes moveDown {
-        from {
-            justify-content: flex-start; /* Start from the top */
-            transform: translateY(-100%); /* Move off-screen initially */
-        }
-        to {
-            justify-content: center; /* Center it */
-            transform: translateY(0); /* End at the normal position */
-        }
+@keyframes moveLeftToCenter {
+    0% {
+        transform: translateX(-100%); /* Start from the left off-screen */
+        opacity: 0; /* Start hidden */
     }
+    50% {
+        opacity: 1; /* Become visible halfway through the animation */
+    }
+    100% {
+        transform: translateX(0); /* End at the normal position (center) */
+        opacity: 1; /* Fully visible */
+    }
+}
 
-    @keyframes fadeIn {
-        to {
-            opacity: 1; /* Fade in to fully visible */
-        }
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Fade in to fully visible */
     }
+}
 
     nav {
         display: flex;
