@@ -18,27 +18,34 @@
         line-height: 1.6;
     }
 
-   header {
+  header {
     background-image: url('background 4.jpg');
     background-size: cover;
     background-position: center;
     color: white;
     text-align: center;
     padding: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-    height: 100vh; /* Make the header cover the full viewport height */
+    height: 100vh; /* Cover the full viewport height */
     display: flex;
     flex-direction: column;
     justify-content: center; /* Center vertically */
 }
 
-header h1 {
-    font-size: 4rem; /* Increase the font size for "AGRIVISION" */
+.main-title {
+    font-size: 4rem; /* Keep the original font size */
     margin-bottom: 0.5rem;
     opacity: 0; /* Start hidden for animation */
     position: relative;
-    animation: moveRightToCenter 2s forwards, fadeIn 1s forwards 0.5s; /* Add animation */
+    animation: moveRightToCenter 2s forwards; /* Animation for moving in */
+}
+
+.vision-text {
+    font-size: 2rem; /* Keep the original font size */
+    margin-top: 1rem;
+    opacity: 0; /* Start hidden for animation */
+    position: relative;
+    font-weight: bold; /* Make the text bold */
+    animation: moveBelowToCenter 2s forwards; /* Animation for moving in */
 }
 
 @keyframes moveRightToCenter {
@@ -46,37 +53,16 @@ header h1 {
         transform: translateX(100%); /* Start from the right off-screen */
         opacity: 0; /* Start hidden */
     }
-    50% {
-        opacity: 1; /* Become visible halfway through the animation */
-    }
     100% {
         transform: translateX(0); /* End at the normal position (center) */
         opacity: 1; /* Fully visible */
     }
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1; /* Fade in to fully visible */
-    }
-}
-
-      header h2 {
-    font-size: 2rem; /* Adjust the font size as needed */
-    margin-top: 1rem;
-    opacity: 0; /* Start hidden for animation */
-    position: relative;
-    font-weight: bold; /* Make the text bold */
-    animation: moveBelowToCenter 2s forwards, fadeIn 1s forwards 0.5s; /* Add animation */
-}
-
 @keyframes moveBelowToCenter {
     0% {
         transform: translateY(100%); /* Start from below off-screen */
         opacity: 0; /* Start hidden */
-    }
-    50% {
-        opacity: 1; /* Become visible halfway through the animation */
     }
     100% {
         transform: translateY(0); /* End at the normal position (center) */
@@ -177,7 +163,7 @@ header h1 {
 <body>
 
 <header>
-    <h1>AGRIVISION</h1>
+    <h1 class="main-title">AGRIVISION</h1>
     <h2 class="vision-text">Your vision for modern agriculture</h2>
 </header>
 
