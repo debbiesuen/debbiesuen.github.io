@@ -61,6 +61,29 @@ header h1 {
     }
 }
 
+      header h2 {
+    font-size: 2rem; /* Adjust the font size as needed */
+    margin-top: 1rem;
+    opacity: 0; /* Start hidden for animation */
+    position: relative;
+    font-weight: bold; /* Make the text bold */
+    animation: moveBelowToCenter 2s forwards, fadeIn 1s forwards 0.5s; /* Add animation */
+}
+
+@keyframes moveBelowToCenter {
+    0% {
+        transform: translateY(100%); /* Start from below off-screen */
+        opacity: 0; /* Start hidden */
+    }
+    50% {
+        opacity: 1; /* Become visible halfway through the animation */
+    }
+    100% {
+        transform: translateY(0); /* End at the normal position (center) */
+        opacity: 1; /* Fully visible */
+    }
+}
+
 
 
     nav {
@@ -155,8 +178,9 @@ header h1 {
 
 <header>
     <h1>AGRIVISION</h1>
-    <p>Your vision for modern agriculture</p>
+    <h2 class="vision-text">Your vision for modern agriculture</h2>
 </header>
+
 
 <nav>
     <a href="#learning-module">Learning Module</a>
