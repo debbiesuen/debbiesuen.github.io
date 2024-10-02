@@ -19,7 +19,7 @@
     }
 
    header {
-    background-image: url('background.jpg');
+    background-image: url('background 4.jpg');
     background-size: cover;
     background-position: center;
     color: white;
@@ -30,7 +30,7 @@
     height: 100vh; /* Make the header cover the full viewport height */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Start from the top */
+    justify-content: center; /* Center vertically */
 }
 
 header h1 {
@@ -38,12 +38,12 @@ header h1 {
     margin-bottom: 0.5rem;
     opacity: 0; /* Start hidden for animation */
     position: relative;
-    animation: moveLeftToCenter 2s forwards, fadeIn 1s forwards 0.5s; /* Add animation */
+    animation: moveRightToCenter 2s forwards, fadeIn 1s forwards 0.5s; /* Add animation */
 }
 
-@keyframes moveLeftToCenter {
+@keyframes moveRightToCenter {
     0% {
-        transform: translateX(-100%); /* Start from the left off-screen */
+        transform: translateX(100%); /* Start from the right off-screen */
         opacity: 0; /* Start hidden */
     }
     50% {
@@ -60,6 +60,8 @@ header h1 {
         opacity: 1; /* Fade in to fully visible */
     }
 }
+
+
 
     nav {
         display: flex;
