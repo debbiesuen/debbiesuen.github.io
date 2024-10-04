@@ -12,7 +12,7 @@
     }
 
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Arial', sans-serif; /* Use Arial for a professional look */
         background-color: #f0f4f8;
         color: #333;
         line-height: 1.6;
@@ -38,7 +38,10 @@
         margin-bottom: 0.5rem;
         opacity: 0; /* Start hidden for animation */
         position: relative;
-        animation: moveRightToCenter 2s forwards, fadeIn 1s forwards 0.5s; /* Add animation */
+        animation: fadeIn 1s forwards 0.5s; /* Add fade-in animation */
+        color: #4CAF50; /* A professional green color */
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5), 4px 4px 0 rgba(0, 0, 0, 0.4), 6px 6px 0 rgba(0, 0, 0, 0.3); /* 3D shadow effect */
+        font-family: 'Arial', sans-serif; /* A more professional font */
     }
 
     header p {
@@ -46,27 +49,20 @@
         margin-top: 0.5rem;
         opacity: 0; /* Start hidden for animation */
         position: relative;
-        animation: moveRightToCenter 2s forwards, fadeIn 1s forwards 0.5s; /* Same animation as h1 */
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* 3D shadow effect */
+        animation: fadeIn 1s forwards 0.5s; /* Same fade-in animation as h1 */
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5); /* Subtle shadow for the subtitle */
+        font-family: 'Arial', sans-serif; /* Keep the same professional font */
     }
 
-    @keyframes moveRightToCenter {
-        0% {
-            transform: translateX(100%); /* Start from the right off-screen */
-            opacity: 0; /* Start hidden */
-        }
-        50% {
-            opacity: 1; /* Become visible halfway through the animation */
-        }
-        100% {
-            transform: translateX(0); /* End at the normal position (center) */
-            opacity: 1; /* Fully visible */
-        }
-    }
-
+    /* Fade-in animation */
     @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start completely transparent */
+            transform: translateY(20px); /* Slightly move up during the fade-in */
+        }
         to {
-            opacity: 1; /* Fade in to fully visible */
+            opacity: 1; /* Fully visible */
+            transform: translateY(0); /* End at the normal position */
         }
     }
 
@@ -155,7 +151,7 @@
             font-size: 0.9rem;
         }
     }
-</style>
+    </style>
 </head>
 <body>
 
