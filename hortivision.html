@@ -33,39 +33,40 @@
         justify-content: center; /* Center vertically */
     }
 
-    header h1, header p {
-        font-size: 4rem; /* Increase the font size */
+    header h1 {
+        font-size: 4rem; /* Increase the font size for "HORTIVISION" */
         margin-bottom: 0.5rem;
         opacity: 0; /* Start hidden for animation */
         position: relative;
-        transform: translateZ(0); /* 3D effect */
-        animation: fadeInUp 1s forwards, moveIn 1s forwards; /* Animation for both elements */
+        animation: moveRightToCenter 2s forwards, fadeIn 1s forwards 0.5s; /* Add animation */
     }
 
     header p {
-        font-size: 2rem; /* Adjust size for paragraph */
-        animation-delay: 0.5s; /* Delay for paragraph */
+        font-size: 1.5rem; /* Make the subtitle smaller */
+        margin-top: 0.5rem;
+        opacity: 0; /* Start hidden for animation */
+        position: relative;
+        animation: moveRightToCenter 2s forwards, fadeIn 1s forwards 0.5s; /* Same animation as h1 */
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* 3D shadow effect */
     }
 
-    @keyframes moveIn {
+    @keyframes moveRightToCenter {
         0% {
-            transform: translateY(50%) scale(1); /* Start below and normal size */
+            transform: translateX(100%); /* Start from the right off-screen */
             opacity: 0; /* Start hidden */
         }
+        50% {
+            opacity: 1; /* Become visible halfway through the animation */
+        }
         100% {
-            transform: translateY(0) scale(1.1); /* End at original position with scale for 3D effect */
+            transform: translateX(0); /* End at the normal position (center) */
             opacity: 1; /* Fully visible */
         }
     }
 
-    @keyframes fadeInUp {
-        0% {
-            transform: translateY(50%); /* Start below */
-            opacity: 0; /* Start hidden */
-        }
-        100% {
-            transform: translateY(0); /* End at original position */
-            opacity: 1; /* Fully visible */
+    @keyframes fadeIn {
+        to {
+            opacity: 1; /* Fade in to fully visible */
         }
     }
 
@@ -154,14 +155,13 @@
             font-size: 0.9rem;
         }
     }
-    </style>
-
+</style>
 </head>
 <body>
 
 <header>
     <h1>HORTIVISION</h1>
-    <p>Your vision for modern Horticulture</p>
+    <p>Your vision for modern horticulture</p>
 </header>
 
 <nav>
@@ -199,19 +199,4 @@
         <h2>Reducing Food Waste & Promoting Sustainability</h2>
         <p><strong>Food Storage & Preservation Techniques:</strong> Learn effective methods to preserve and store your crops, reducing post-harvest losses due to improper storage.</p>
         <p><strong>Circular Agriculture Programs:</strong> Discover how to recycle agricultural waste into organic fertilizers and integrate livestock to lower costs and protect the environment.</p>
-    </section>
-
-    <!-- Community Interaction and Experience Sharing -->
-    <section id="community" class="feature">
-        <h2>Community Interaction & Experience Sharing</h2>
-        <p><strong>Forums & Discussion Boards:</strong> Join a community of farmers to discuss, share experiences, and exchange tips on agricultural practices and technologies.</p>
-        <p><strong>Success Story Sharing:</strong> Get inspired by success stories from other farmers who have successfully adopted sustainable agricultural methods.</p>
-    </section>
-</div>
-
-<footer>
-    <p>&copy; 2024 Digital Agriculture Platform | SDG 2: Zero Hunger</p>
-</footer>
-
-</body>
-</html>
+    </
