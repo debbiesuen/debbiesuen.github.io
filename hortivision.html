@@ -33,31 +33,39 @@
         justify-content: center; /* Center vertically */
     }
 
-    header h1 {
-        font-size: 4rem; /* Increase the font size for "AGRIVISION" */
+    header h1, header p {
+        font-size: 4rem; /* Increase the font size */
         margin-bottom: 0.5rem;
         opacity: 0; /* Start hidden for animation */
         position: relative;
-        animation: moveRightToCenter 2s forwards, fadeIn 1s forwards 0.5s; /* Add animation */
+        transform: translateZ(0); /* 3D effect */
+        animation: fadeInUp 1s forwards, moveIn 1s forwards; /* Animation for both elements */
     }
 
-    @keyframes moveRightToCenter {
+    header p {
+        font-size: 2rem; /* Adjust size for paragraph */
+        animation-delay: 0.5s; /* Delay for paragraph */
+    }
+
+    @keyframes moveIn {
         0% {
-            transform: translateX(100%); /* Start from the right off-screen */
+            transform: translateY(50%) scale(1); /* Start below and normal size */
             opacity: 0; /* Start hidden */
         }
-        50% {
-            opacity: 1; /* Become visible halfway through the animation */
-        }
         100% {
-            transform: translateX(0); /* End at the normal position (center) */
+            transform: translateY(0) scale(1.1); /* End at original position with scale for 3D effect */
             opacity: 1; /* Fully visible */
         }
     }
 
-    @keyframes fadeIn {
-        to {
-            opacity: 1; /* Fade in to fully visible */
+    @keyframes fadeInUp {
+        0% {
+            transform: translateY(50%); /* Start below */
+            opacity: 0; /* Start hidden */
+        }
+        100% {
+            transform: translateY(0); /* End at original position */
+            opacity: 1; /* Fully visible */
         }
     }
 
@@ -146,14 +154,14 @@
             font-size: 0.9rem;
         }
     }
-</style>
+    </style>
 
 </head>
 <body>
 
 <header>
     <h1>HORTIVISION</h1>
-    <p>Your vision for modern Horticulture </p>
+    <p>Your vision for modern Horticulture</p>
 </header>
 
 <nav>
@@ -207,4 +215,3 @@
 
 </body>
 </html>
-
