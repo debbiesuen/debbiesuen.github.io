@@ -12,8 +12,8 @@
     }
 
     body {
-        font-family: 'Arial', sans-serif; /* Use Arial for a professional look */
-        background-color: #f0f4f8;
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #e6f4ea, #c8e6c9); /* Light green gradient */
         color: #333;
         line-height: 1.6;
     }
@@ -24,81 +24,69 @@
         background-position: center;
         color: white;
         text-align: center;
-        padding: 0; /* Keep padding at zero for positioning */
+        padding: 0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         position: relative;
-        height: 100vh; /* Make the header cover the full viewport height */
+        height: 100vh;
         display: flex;
         flex-direction: column;
-        justify-content: center; /* Center items vertically */
+        justify-content: center;
     }
 
-    /* Adding the translucent black overlay */
+    /* Black translucent overlay on the background image */
     header::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.3); /* Black with 50% transparency */
-        z-index: 1; /* Make sure it's behind the text */
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3); /* 40% opacity black overlay */
+        z-index: 1;
     }
 
-    header h1,
-    header p {
+    header h1, header p {
         position: relative;
-        z-index: 2; /* Ensure the text is above the overlay */
+        z-index: 2; /* Ensure text is above the overlay */
     }
 
     header h1 {
-        font-size: 4rem; /* Increase the font size for "HORTIVISION" */
-        margin-bottom: 5px; /* Reduced bottom margin for spacing */
-        opacity: 5; /* Start hidden for animation */
-        position: relative;
-        animation: fadeIn 2s forwards 0.5s; /* Extend fade-in animation duration */
-        color: white; /* Change the color back to white */
-        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5); /* Reduced shadow effect */
-        font-family: 'Apple Chancery', serif; 
-        font-smooth: always; /* Smoother text rendering */
-        -webkit-font-smoothing: antialiased; /* For WebKit browsers */
-        -moz-osx-font-smoothing: grayscale; /* For Firefox on macOS */
+        font-size: 4rem;
+        margin-bottom: 5px;
+        opacity: 0;
+        animation: fadeIn 2s forwards 0.5s;
+        color: white;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+        font-family: 'Apple Chancery', serif;
     }
 
     header p {
-        font-size: 1.5rem; /* Subtitle font size */
-        margin-top: 10px; /* Adjust margin to move lower */
-        opacity: 0; /* Start hidden for animation */
-        position: relative;
-        animation: fadeIn 2s forwards 0.5s; /* Extend fade-in animation duration */
-        color: white; /* Color for the subtitle */
-        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6); /* Reduced shadow effect */
+        font-size: 1.5rem;
+        margin-top: 10px;
+        opacity: 0;
+        animation: fadeIn 2s forwards 0.5s;
+        color: white;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
         font-family: 'Apple Chancery', serif;
-        font-smooth: always; /* Smoother text rendering */
-        -webkit-font-smoothing: antialiased; /* For WebKit browsers */
-        -moz-osx-font-smoothing: grayscale; /* For Firefox on macOS */
     }
 
-    /* Fade-in animation */
     @keyframes fadeIn {
         from {
-            opacity: 0; /* Start completely transparent */
-            transform: translateY(20px); /* Slightly move up during the fade-in */
+            opacity: 0;
+            transform: translateY(20px);
         }
         to {
-            opacity: 1; /* Fully visible */
-            transform: translateY(0); /* End at the normal position */
+            opacity: 1;
+            transform: translateY(0);
         }
     }
 
     nav {
         display: flex;
         justify-content: center;
-        background-color: rgba(76, 175, 80, 0.7); /* Make nav translucent */
+        background-color: rgba(76, 175, 80, 0.7);
         padding: 1rem;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        position: relative;
-        z-index: 10;
     }
 
     nav a {
@@ -106,7 +94,7 @@
         text-decoration: none;
         padding: 0.8rem 1.2rem;
         margin: 0 0.5rem;
-        background-color: rgba(102, 187, 106, 0.8); /* Translucent buttons */
+        background-color: rgba(102, 187, 106, 0.8);
         border-radius: 5px;
         transition: background-color 0.3s;
     }
@@ -119,12 +107,10 @@
         max-width: 1200px;
         margin: 2rem auto;
         padding: 0 1.5rem;
-        position: relative;
-        z-index: 5;
     }
 
     .feature {
-        background-color: rgba(255, 255, 255, 0.9); /* Translucent feature boxes */
+        background-color: rgba(255, 255, 255, 0.9);
         border-radius: 10px;
         margin-bottom: 2rem;
         padding: 2rem;
