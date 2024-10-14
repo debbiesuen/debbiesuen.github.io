@@ -109,6 +109,21 @@
     }
 }
 
+        /* Initial state of the blocks: hidden */
+   .block {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* This class will trigger the fade-up animation */
+.block.fade-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+        
+
 /* Add delay to each block for a staggered effect */
 .block:nth-child(1) {
     animation-delay: 0.2s;
