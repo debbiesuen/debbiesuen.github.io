@@ -31,7 +31,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start; /* Move text upwards */
-    padding-top: 100px; /* Adjust padding to control the position */
+        padding-top: 100px; /* Adjust padding to control the position */
     }
 
     /* Black translucent overlay on the background image */
@@ -85,7 +85,7 @@
     nav {
         display: flex;
         justify-content: center;
-        background-color:  linear-gradient(135deg, #e6f4ea, #c8e6c9));
+        background-color:  linear-gradient(135deg, #e6f4ea, #c8e6c9);
         padding: 1rem;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
@@ -95,7 +95,7 @@
         text-decoration: none;
         padding: 0.8rem 1.2rem;
         margin: 0 0.5rem;
-        background-color:  linear-gradient(135deg, #e6f4ea, #c8e6c9));
+        background-color: rgba(67, 160, 71, 0.8);
         border-radius: 5px;
         transition: background-color 0.3s;
     }
@@ -110,28 +110,76 @@
         padding: 0 1.5rem;
     }
 
-    .feature {
-        background-color:  linear-gradient(135deg, #e6f4ea, #c8e6c9);
-        border-radius: 10px;
+    /* "About Us" section with animation */
+    #about-us {
+        text-align: center;
+        padding: 3rem 1.5rem;
+        background-color: rgba(255, 255, 255, 0.8);
         margin-bottom: 2rem;
-        padding: 2rem;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s;
+        opacity: 0;
+        animation: slideIn 2s forwards 1s; /* Slide in animation */
     }
 
-    .feature:hover {
-        transform: translateY(-5px);
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
-    .feature h2 {
-        font-size: 1.8rem;
+    #about-us h2 {
+        font-size: 2.5rem;
         color: #43a047;
         margin-bottom: 1rem;
     }
 
-    .feature p {
-        font-size: 1rem;
-        color: #555;
+    #about-us p {
+        font-size: 1.2rem;
+        color: #333;
+    }
+
+    /* 6 clickable blocks with images */
+    .image-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .image-block {
+        width: 30%;
+        margin: 1rem;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .image-block:hover {
+        transform: scale(1.05);
+    }
+
+    .image-block img {
+        width: 100%;
+        height: auto;
+    }
+
+    .image-block a {
+        display: block;
+        color: #333;
+        text-decoration: none;
+        text-align: center;
+        padding: 1rem;
+        background-color: rgba(255, 255, 255, 0.8);
+        transition: background-color 0.3s ease;
+    }
+
+    .image-block a:hover {
+        background-color: #43a047;
+        color: white;
     }
 
     footer {
@@ -162,7 +210,11 @@
         .feature p {
             font-size: 0.9rem;
         }
+        .image-block {
+            width: 45%;
+        }
     }
+
     </style>
 </head>
 <body>
@@ -179,25 +231,39 @@
     </nav>
 
     <div class="container">
-        <section id="learning-module" class="feature">
-            <h2>Learning Module</h2>
-            <p>This module provides a comprehensive guide on modern horticulture practices and techniques.</p>
+        <!-- About Us section -->
+        <section id="about-us">
+            <h2>About Us</h2>
+            <p>HORTIVISION is your partner in embracing modern horticulture techniques. We offer educational resources, data analytics, and community events to help farmers and enthusiasts improve their practices.</p>
         </section>
 
-        <section id="data-support" class="feature">
-            <h2>Real-Time Data Support</h2>
-            <p>Access to data analytics tools for effective decision-making in agricultural practices.</p>
-        </section>
-
-        <section id="market-info" class="feature">
-            <h2>Market Info & Insights</h2>
-            <p>Get the latest market trends and insights to make informed choices.</p>
-        </section>
-
-        <section id="community-events" class="feature">
-            <h2>Community Events</h2>
-            <p>Participate in workshops and community events that promote sustainable agriculture and technological advancements.</p>
-        </section>
+        <!-- Image grid section with clickable blocks -->
+        <div class="image-grid">
+            <div class="image-block">
+                <img src="image1.jpg" alt="Block 1">
+                <a href="#">Block 1</a>
+            </div>
+            <div class="image-block">
+                <img src="image2.jpg" alt="Block 2">
+                <a href="#">Block 2</a>
+            </div>
+            <div class="image-block">
+                <img src="image3.jpg" alt="Block 3">
+                <a href="#">Block 3</a>
+            </div>
+            <div class="image-block">
+                <img src="image4.jpg" alt="Block 4">
+                <a href="#">Block 4</a>
+            </div>
+            <div class="image-block">
+                <img src="image5.jpg" alt="Block 5">
+                <a href="#">Block 5</a>
+            </div>
+            <div class="image-block">
+                <img src="image6.jpg" alt="Block 6">
+                <a href="#">Block 6</a>
+            </div>
+        </div>
     </div>
 
     <footer>
