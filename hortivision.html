@@ -90,14 +90,13 @@
         font-size: 1.8rem;
     }
 
-    .block-container {
-        display: grid;
-        grid-template-columns: repeat(3, 0.6fr); /* 3 columns for 6 blocks */
-        gap: 1rem;
-        max-width: 1200px;
-        margin: 2rem auto;
-        padding: 0 1.5rem;
-    }
+.block-container {
+    display: grid;
+    grid-template-columns: repeat(3, 280px); /* Set a fixed width for each block */
+    gap: 1rem;
+    justify-content: center; /* Center the blocks */
+}
+
 
     .block {
         background-color: #fff;
