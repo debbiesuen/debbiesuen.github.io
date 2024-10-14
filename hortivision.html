@@ -90,6 +90,64 @@
         font-size: 1.8rem;
     }
 
+
+        /* Keyframes for fade-up animation */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Start from slightly below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Move up to its original position */
+    }
+}
+
+/* Apply the animation to the blocks */
+.block {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    height: 500px;
+    
+    opacity: 0; /* Initially hidden */
+    animation: fadeUp 1s ease forwards; /* Apply the fade-up animation */
+}
+
+/* Add delay to each block for a staggered effect */
+.block:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.block:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.block:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.block:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.block:nth-child(5) {
+    animation-delay: 1s;
+}
+
+.block:nth-child(6) {
+    animation-delay: 1.2s;
+}
+
+/* Optional hover effect for the blocks */
+.block:hover {
+    transform: translateY(-5px);
+}
+
+
 .block-container {
     display: grid;
     grid-template-columns: repeat(3, 300px); /* Set a fixed width for each block */
