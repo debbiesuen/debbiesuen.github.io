@@ -91,7 +91,13 @@
     }
 
 
-        /* Keyframes for fade-up animation */
+.block-container {
+    display: grid;
+    grid-template-columns: repeat(3, 300px); /* Set a fixed width for each block */
+    gap: 2rem;
+    justify-content: center; /* Center the blocks */
+}
+
 @keyframes fadeUp {
     from {
         opacity: 0;
@@ -101,20 +107,6 @@
         opacity: 1;
         transform: translateY(0); /* Move up to its original position */
     }
-}
-
-/* Apply the animation to the blocks */
-.block {
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    height: 500px;
-    
-    opacity: 0; /* Initially hidden */
-    animation: fadeUp 1s ease forwards; /* Apply the fade-up animation */
 }
 
 /* Add delay to each block for a staggered effect */
@@ -142,20 +134,7 @@
     animation-delay: 1.2s;
 }
 
-/* Optional hover effect for the blocks */
-.block:hover {
-    transform: translateY(-5px);
-}
-
-
-.block-container {
-    display: grid;
-    grid-template-columns: repeat(3, 300px); /* Set a fixed width for each block */
-    gap: 2rem;
-    justify-content: center; /* Center the blocks */
-}
-
-
+        
     .block {
         background-color: #fff;
         border-radius: 30px;
@@ -164,6 +143,8 @@
         transition: transform 0.3s ease;
         cursor: pointer;
         height: 450px;
+     opacity: 0; /* Initially hidden */
+       animation: fadeUp 1s ease forwards; /* Apply the fade-up animation */
     }
 
     .block img {
