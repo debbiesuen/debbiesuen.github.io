@@ -84,69 +84,9 @@
         .about-us {
             text-align: center;
             padding: 30rem 0;
-            background: #F9FDF9;
+           background: #F9FDF9;
             color: black;
             font-size: 1.8rem;
-            position: relative;
-            overflow: hidden; /* Hide overflowing bubbles */
-        }
-
-        .bubble {
-            position: absolute;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.3);
-            animation: float 6s ease-in-out infinite;
-            opacity: 0;
-        }
-
-        .bubble1 {
-            width: 80px;
-            height: 80px;
-            bottom: -100px;
-            left: 20%;
-            animation-delay: 1s;
-        }
-
-        .bubble2 {
-            width: 120px;
-            height: 120px;
-            bottom: -120px;
-            left: 50%;
-            animation-delay: 2s;
-        }
-
-        .bubble3 {
-            width: 60px;
-            height: 60px;
-            bottom: -150px;
-            left: 80%;
-            animation-delay: 3s;
-        }
-
-        .bubble4 {
-            width: 100px;
-            height: 100px;
-            bottom: -200px;
-            left: 10%;
-            animation-delay: 4s;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-                opacity: 0;
-            }
-            30% {
-                opacity: 0.5;
-            }
-            50% {
-                transform: translateY(-300px);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-600px);
-                opacity: 0;
-            }
         }
 
         .block-container {
@@ -263,12 +203,77 @@
     <div class="about-us">
         <h2>About Us</h2>
         <p>HORTIVISION is dedicated to modernizing horticulture with innovative solutions and data-driven insights.</p>
-
-        <!-- Animated bubbles -->
-        <div class="bubble bubble1"></div>
-        <div class="bubble bubble2"></div>
-        <div class="bubble bubble3"></div>
-        <div class="bubble bubble4"></div>
     </div>
 
-    <
+    <div class="block-container">
+        <div class="block">
+            <img src="img1.jpg" alt="Image 1">
+            <div class="overlay">
+                <h3>Tutorial</h3>
+            </div>
+        </div>
+
+        <div class="block">
+            <video autoplay loop muted>
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+            <div class="overlay">
+                <h3>Real-Time Data</h3>
+            </div>
+        </div>
+
+        <div class="block">
+            <img src="image3c.jpg" alt="Image 3">
+            <div class="overlay">
+                <h3>Market Sales</h3>
+            </div>
+        </div>
+
+        <div class="block">
+            <img src="image4b.jpeg" alt="Image 4">
+            <div class="overlay">
+                <h3>Food Sharing Map</h3>
+            </div>
+        </div>
+
+        <div class="block">
+            <img src="image5a.png" alt="Image 5">
+            <div class="overlay">
+                <h3>Fundraising</h3>
+            </div>
+        </div>
+
+        <div class="block">
+            <img src="image6b.jpg" alt="Image 6">
+            <div class="overlay">
+                <h3>Discussion Board</h3>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 HORTIVISION. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll-triggered animations
+        const blocks = document.querySelectorAll('.block');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                } else {
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        }, {
+            threshold: 0.3 // Trigger when 30% of the block is visible
+        });
+
+        blocks.forEach(block => {
+            observer.observe(block);
+        });
+    </script>
+</body>
+</html>
