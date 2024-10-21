@@ -88,15 +88,16 @@
     top: 200px;
 }
 
-/* Base circle style */
-.circle {
-    width: 150px;
-    height: 150px;
+ .circle {
+    width: 150px; /* Keep the circle size */
+    height: 150px; /* Keep the circle size */
     border-radius: 50%;
     background-color: rgba(67, 160, 71, 0.7); /* Translucent green */
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 4vw; /* Responsive font size */
+    color: white;
     position: absolute;
     animation-duration: 2s;
     animation-timing-function: ease-in-out;
@@ -106,12 +107,12 @@
     transform-style: preserve-3d; /* Enables 3D transforms */
 }
 
-/* Text inside the circles */
 .circle span {
-    font-size: 2vw; /* Responsive font size */
-    text-align: center; /* Center the text */
-    padding: 10px; /* Optional: add some padding */
+    font-size: inherit; /* Inherit font size from the circle */
+    text-align: center; /* Center align the text */
+    padding: 0 10px; /* Add some horizontal padding */
 }
+
 
 /* Left circle animation - scales to 10x size */
 .left-circle {
@@ -255,18 +256,12 @@
     </header>
  <div class="about-us">
    
-
-     <div class="about-us">
-    <h2> </h2>
-    <p> </p>
-    
-    <div class="circle-container">
-        <div class="circle left-circle">
-            <span>About Us</span>
-        </div>
-        <div class="circle right-circle">
-            <span>HORTIVISION is dedicated to modernizing horticulture with innovative solutions and data-driven insights.</span>
-        </div>
+<div class="circle-container">
+    <div class="circle left-circle">
+        <span>About Us</span>
+    </div>
+    <div class="circle right-circle">
+        <span>HORTIVISION is dedicated to modernizing horticulture with innovative solutions and data-driven insights.</span>
     </div>
 </div>
 
