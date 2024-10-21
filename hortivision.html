@@ -81,10 +81,17 @@
             }
         }
 
+/* About Us container */
+.about-us {
+    position: relative;
+    text-align: center;
+    padding: 20px;
+}
+
 /* Container for circles */
 .circle-container {
     position: relative;
-    height: 250px;
+    height: 250px; /* Adjust based on the content */
     margin-top: 3rem;
 }
 
@@ -100,41 +107,40 @@
     font-size: 1.2rem;
     color: white;
     position: absolute;
-    animation-duration: 2s;
+    animation-duration: 3s; /* Time it takes to meet in the center */
     animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
+    animation-fill-mode: forwards; /* Keeps the animation state after finishing */
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 3D shadow effect */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-    transform-style: preserve-3d;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Text shadow for better visibility */
+    transform-style: preserve-3d; /* Enables 3D transforms */
 }
 
-/* Left circle animation - scales to 10x size */
+/* Left circle animation */
 .left-circle {
-    left: 100px; /* Adjusted position to move it further right */
+    left: -200px; /* Start position off-screen */
     animation-name: moveLeft;
     background: rgba(0, 162, 232, 0.7); /* Translucent blue */
 }
 
-/* Right circle animation - scales to 5x size */
+/* Right circle animation */
 .right-circle {
-    right: 100px; /* Adjusted position to move it further right */
+    right: -200px; /* Start position off-screen */
     animation-name: moveRight;
     background: rgba(255, 87, 34, 0.7); /* Translucent orange */
 }
 
-/* Animation for left circle */
+/* Animation for left circle (moves to the center) */
 @keyframes moveLeft {
-    0% { left: 100px; } /* Start further right */
-    50% { left: calc(50% - 400px); transform: scale(1); } /* Adjusted position */
-    100% { left: calc(50% - 400px); transform: scale(10); } /* Scale to 10x */
+    0% { left: -200px; }
+    100% { left: calc(50% - 75px); } /* Moves to center horizontally */
 }
 
-/* Animation for right circle */
+/* Animation for right circle (moves to the center) */
 @keyframes moveRight {
-    0% { right: 100px; } /* Start further right */
-    50% { right: calc(50% - 100px); transform: scale(1); } /* Adjusted position */
-    100% { right: calc(50% - 100px); transform: scale(5); } /* Scale to 5x */
+    0% { right: -200px; }
+    100% { right: calc(50% - 75px); } /* Moves to center horizontally */
 }
+
 
 
 
