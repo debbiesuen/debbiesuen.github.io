@@ -81,61 +81,62 @@
             }
         }
 
-        .circle-container {
-            position: relative;
-            height: 600px; /* Increased height to accommodate larger circles */
-            margin-top: 3rem;
-            top: 200px;
-        }
+.circle-container {
+    position: relative;
+    height: 600px; /* Increased height to accommodate larger circles */
+    margin-top: 3rem;
+    top: 200px;
+}
 
-        /* Base circle style */
-        .circle {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-color: rgba(67, 160, 71, 0.7); /* Translucent green */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 4vw; /* Adjust font size to be responsive */
-            color: white;
-            position: absolute;
-            animation-duration: 2s;
-            animation-timing-function: ease-in-out;
-            animation-fill-mode: forwards; /* Keeps the animation state after it finishes */
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 3D shadow effect */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Text shadow for better visibility */
-            transform-style: preserve-3d; /* Enables 3D transforms */
-            text-align: center; /* Center text */
-        }
+/* Base circle style */
+.circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rgba(67, 160, 71, 0.7); /* Translucent green */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: white;
+    position: absolute;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards; /* Keeps the animation state after it finishes */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 3D shadow effect */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Text shadow for better visibility */
+    transform-style: preserve-3d; /* Enables 3D transforms */
+}
 
-        /* Left circle animation - scales to 10x size */
-        .left-circle {
-            left: -200px; /* Start position off-screen */
-            animation-name: moveLeft;
-            background: rgb(216, 224, 199, 0.7); /* Translucent blue */
-        }
+/* Left circle animation - scales to 10x size */
+.left-circle {
+    left: -200px; /* Start position off-screen */
+    animation-name: moveLeft;
+    background: rgb(216, 224, 199, 0.7); /* Translucent blue */
+}
 
-        /* Right circle animation - scales to 5x size */
-        .right-circle {
-            right: -200px; /* Start position off-screen */
-            animation-name: moveRight;
-            background: rgb(216, 224, 166,0.7); /* Translucent orange */
-        }
+/* Right circle animation - scales to 5x size */
+.right-circle {
+    right: -200px; /* Start position off-screen */
+    animation-name: moveRight;
+    background: rgb(216, 224, 166,0.7); /* Translucent orange */
+}
 
-        /* Animation for left circle (moves in, then scales to 10x) */
-        @keyframes moveLeft {
-            0% { left: 100px; }
-            50% { left: calc(50% - 350px); transform: scale(5); top: 80px; } /* Move to position */
-            100% { left: calc(50% - 350px); transform: scale(2); top: 150px; } /* Scale to 10x */
-        }
+/* Animation for left circle (moves in, then scales to 10x) */
+@keyframes moveLeft {
+    0% { left: 100px; }
+    50% { left: calc(50% - 350px); transform: scale(5); top: 80px; } /* Move to position */
+    100% { left: calc(50% - 350px); transform: scale(2); top: 150px; } /* Scale to 10x */
+}
 
-        /* Animation for right circle (moves in, then scales to 5x) */
-        @keyframes moveRight {
-            0% { right: 100px; }
-            50% { right: calc(50% - 150px); transform: scale(1); top: 250px; } /* Move to position */
-            100% { right: calc(50% - 150px); transform: scale(3); top: 100px; } /* Scale to 5x */
-        }
+/* Animation for right circle (moves in, then scales to 5x) */
+@keyframes moveRight {
+    0% { right: 100px; }
+    50% { right: calc(50% - 150px); transform: scale(1); top: 250px; } /* Move to position */
+    100% { right: calc(50% - 150px); transform: scale(3); top: 100px; } /* Scale to 5x */
+}
+
+
 
         .block-container {
             display: grid;
@@ -247,68 +248,91 @@
         <h1>HORTIVISION</h1>
         <p>Your vision for modern horticulture</p>
     </header>
-    <div class="about-us">
-        <h2>About Us</h2>
-        <p></p>
+ <div class="about-us">
+   
+
+     <div class="about-us">
+    <h2>About Us</h2>
+    <p></p>
     
-        <div class="circle-container">
-            <div class="circle left-circle">
-                <span>About Us</span>
-            </div>
-            <div class="circle right-circle">
-                <span>HORTIVISION is dedicated to modernizing horticulture with innovative solutions and data-driven insights.</span>
-            </div>
+    <div class="circle-container">
+        <div class="circle left-circle">
+            <span>About Us</span>
+        </div>
+        <div class="circle right-circle">
+            <span>HORTIVISION is dedicated to modernizing horticulture with innovative solutions and data-driven insights.</span>
         </div>
     </div>
+</div>
+
+
+
      
     <div class="block-container">
         <div class="block">
             <img src="img1.jpg" alt="Image 1">
             <div class="overlay">
-                <h3>Block Title 1</h3>
+                <h3>Tutorial</h3>
             </div>
         </div>
+
         <div class="block">
-            <img src="img2.jpg" alt="Image 2">
+            <video autoplay loop muted>
+                <source src="video2.mp4" type="video/mp4">
+            </video>
             <div class="overlay">
-                <h3>Block Title 2</h3>
+                <h3>Real-Time Data</h3>
             </div>
         </div>
+
         <div class="block">
-            <img src="img3.jpg" alt="Image 3">
+            <img src="image3c.jpg" alt="Image 3">
             <div class="overlay">
-                <h3>Block Title 3</h3>
+                <h3>Market Sales</h3>
+            </div>
+        </div>
+
+        <div class="block">
+            <img src="image4b.jpeg" alt="Image 4">
+            <div class="overlay">
+                <h3>Food Sharing Map</h3>
+            </div>
+        </div>
+
+        <div class="block">
+            <img src="image5a.png" alt="Image 5">
+            <div class="overlay">
+                <h3>Fundraising</h3>
+            </div>
+        </div>
+
+        <div class="block">
+            <img src="image6b.jpg" alt="Image 6">
+            <div class="overlay">
+                <h3>Discussion Board</h3>
             </div>
         </div>
     </div>
-
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
-    </nav>
 
     <footer>
         <p>&copy; 2024 HORTIVISION. All rights reserved.</p>
     </footer>
 
     <script>
-        // Intersection Observer to reveal blocks on scroll
+        // Intersection Observer for scroll-triggered animations
         const blocks = document.querySelectorAll('.block');
-        const options = {
-            root: null,
-            threshold: 0.1
-        };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-view');
-                    observer.unobserve(entry.target);
+                } else {
+                    entry.target.classList.remove('in-view');
                 }
             });
-        }, options);
+        }, {
+            threshold: 0.3 // Trigger when 30% of the block is visible
+        });
 
         blocks.forEach(block => {
             observer.observe(block);
