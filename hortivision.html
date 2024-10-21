@@ -81,10 +81,10 @@
             }
         }
 
-    /* Container for circles */
+/* Container for circles */
 .circle-container {
     position: relative;
-    height: 600px; /* Increased height to accommodate larger circles */
+    height: 250px;
     margin-top: 3rem;
 }
 
@@ -102,38 +102,38 @@
     position: absolute;
     animation-duration: 2s;
     animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards; /* Keeps the animation state after it finishes */
+    animation-fill-mode: forwards;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 3D shadow effect */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Text shadow for better visibility */
-    transform-style: preserve-3d; /* Enables 3D transforms */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    transform-style: preserve-3d;
 }
 
 /* Left circle animation - scales to 10x size */
 .left-circle {
-    left: 100px; /* Start position off-screen */
+    left: 0px; /* Start at the far left */
     animation-name: moveLeft;
     background: rgba(0, 162, 232, 0.7); /* Translucent blue */
 }
 
 /* Right circle animation - scales to 5x size */
 .right-circle {
-    right: 100px; /* Start position off-screen */
+    right: 0px; /* Start at the far right */
     animation-name: moveRight;
     background: rgba(255, 87, 34, 0.7); /* Translucent orange */
 }
 
-/* Animation for left circle (moves in, then scales to 10x) */
+/* Animation for left circle - moves to center */
 @keyframes moveLeft {
-    0% { left: -200px; }
-    50% { left: calc(50% - 500px); transform: scale(1); } /* Move to position */
-    100% { left: calc(50% - 500px); transform: scale(5); } /* Scale to 10x */
+    0% { left: 0px; } /* Start at the far left */
+    50% { left: calc(50% - 75px); transform: scale(1); } /* Move to center */
+    100% { left: calc(50% - 75px); transform: scale(10); } /* Scale to 10x */
 }
 
-/* Animation for right circle (moves in, then scales to 5x) */
+/* Animation for right circle - moves to center */
 @keyframes moveRight {
-    0% { right: -200px; }
-    50% { right: calc(50% - 75px); transform: scale(3); } /* Move to position */
-    100% { right: calc(50% - 75px); transform: scale(2); } /* Scale to 5x */
+    0% { right: 0px; } /* Start at the far right */
+    50% { right: calc(50% - 75px); transform: scale(1); } /* Move to center */
+    100% { right: calc(50% - 75px); transform: scale(5); } /* Scale to 5x */
 }
 
 
