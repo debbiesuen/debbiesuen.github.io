@@ -97,8 +97,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
-    color: white;
     position: absolute;
     animation-duration: 2s;
     animation-timing-function: ease-in-out;
@@ -106,6 +104,13 @@
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 3D shadow effect */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Text shadow for better visibility */
     transform-style: preserve-3d; /* Enables 3D transforms */
+}
+
+/* Text inside the circles */
+.circle span {
+    font-size: 2vw; /* Responsive font size */
+    text-align: center; /* Center the text */
+    padding: 10px; /* Optional: add some padding */
 }
 
 /* Left circle animation - scales to 10x size */
@@ -125,15 +130,15 @@
 /* Animation for left circle (moves in, then scales to 10x) */
 @keyframes moveLeft {
     0% { left: 100px; }
-    50% { left: calc(50% - 350px); transform: scale(3); top: 80px; } /* Move to position */
-    100% { left: calc(50% - 350px); transform: scale(2); top: 250px; } /* Scale to 10x */
+    50% { left: calc(50% - 350px); transform: scale(5); top: 80px; } /* Move to position */
+    100% { left: calc(50% - 350px); transform: scale(2); top: 150px; } /* Scale to 10x */
 }
 
 /* Animation for right circle (moves in, then scales to 5x) */
 @keyframes moveRight {
     0% { right: 100px; }
-    50% { right: calc(50% - 150px); transform: scale(2); top: 250px; } /* Move to position */
-    100% { right: calc(50% - 150px); transform: scale(3); top: 400px; } /* Scale to 5x */
+    50% { right: calc(50% - 150px); transform: scale(1); top: 250px; } /* Move to position */
+    100% { right: calc(50% - 150px); transform: scale(3); top: 100px; } /* Scale to 5x */
 }
 
 
