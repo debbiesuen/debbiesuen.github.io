@@ -263,4 +263,56 @@
      
     <div class="block-container">
         <div class="block">
-            <img src="img1.jpg" alt
+            <img src="img1.jpg" alt="Image 1">
+            <div class="overlay">
+                <h3>Block Title 1</h3>
+            </div>
+        </div>
+        <div class="block">
+            <img src="img2.jpg" alt="Image 2">
+            <div class="overlay">
+                <h3>Block Title 2</h3>
+            </div>
+        </div>
+        <div class="block">
+            <img src="img3.jpg" alt="Image 3">
+            <div class="overlay">
+                <h3>Block Title 3</h3>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <footer>
+        <p>&copy; 2024 HORTIVISION. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Intersection Observer to reveal blocks on scroll
+        const blocks = document.querySelectorAll('.block');
+        const options = {
+            root: null,
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        blocks.forEach(block => {
+            observer.observe(block);
+        });
+    </script>
+</body>
+</html>
