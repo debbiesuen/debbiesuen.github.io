@@ -122,19 +122,18 @@
     animation-name: moveRight;
     background: rgb(216, 224, 166,0.7); /* Translucent orange */
 }
-
 /* Animation for left circle (moves in, then scales to 10x) */
 @keyframes moveLeft {
     0% { left: 100px; }
     50% { left: calc(50% - 300px); transform: scale(5); top: 80px; font-size: calc(0.2rem * 5)  } /* Move to position */
-    100% { left: calc(50% -3000px); transform: scale(1); top: 40px; font-size: 1rem; } /* Scale to 10x */
+    100% { left: calc(50% -3000px); transform: scale(2); top: 20px; font-size: 1rem; } /* Scale to 10x */
 }
 
 /* Animation for right circle (moves in, then scales to 5x) */
 @keyframes moveRight {
     0% { right: 100px; }
     50% { right: calc(50% - 150px); transform: scale(1); top: 250px; font-size: 0.2rem;  } /* Move to position */
-    100% { right: calc(50% - 150px); transform: scale(4); top: 300px; font-size: calc(0.2rem * 4);} /* Scale to 5x */
+    100% { right: calc(50% - 150px); transform: scale(6); top: 300px; font-size: calc(0.2rem * 4);} /* Scale to 5x */
 }
 
 
