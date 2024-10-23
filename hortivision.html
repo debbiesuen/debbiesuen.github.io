@@ -127,7 +127,7 @@
 .third-circle {
     left: 100px;
     top: 400px; /* Adjust position to fit below the other circles */
-    background-color: rgba(255, 87, 34, 0.7); /* Translucent red */
+    background-color: rgb(216, 224, 182,0.7); /* Translucent red */
     animation-name: moveRightToSquare;
 }
 
@@ -140,13 +140,13 @@
     }
     50% {
         left: calc(50% - 100px); /* Move right */
-        transform: scale(2); /* Grow in size */
+        transform: scale(5); /* Grow in size */
         border-radius: 50%; /* Still a circle */
     }
     100% {
         left: calc(50% - 100px); /* Move further right */
         transform: scale(1.5); /* Return to normal size */
-        border-radius: 10px; /* Become a square with rounded corners */
+        border-radius: 20px; /* Become a square with rounded corners */
     }
 }
 
@@ -157,7 +157,7 @@
 @keyframes moveLeft {
     0% { left: 100px; }
     50% { left: calc(50% -400px); transform: scale(3); top: 80px; font-size: 0.8rem  } /* Move to position */
-    100% { left: calc(50% -400px); transform: scale(1.5); top: 20px; font-size: 0.7rem; } /* Scale to 10x */
+    100% { left: calc(50% -400px); transform: scale(1.5); top: 20px; font-size: 1rem; } /* Scale to 10x */
 }
 
 /* Animation for right circle (moves in, then scales to 5x) */
@@ -291,11 +291,11 @@
             <span>About Us</span>
         </div>
         <div class="circle right-circle">
-            <span>HORTIVISION is dedicated to modernizing horticulture with innovative solutions and data-driven insights.</span>
+            <span></span>
         </div>
 
         <div class="circle third-circle">
-    <span>Transforming Square</span>
+    <span><span>HORTIVISION is dedicated to modernizing horticulture with innovative solutions and data-driven insights.</span></span>
 </div>
 
     </div>
