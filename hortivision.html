@@ -116,43 +116,7 @@
     background: rgb(216, 224, 199, 0.7); /* Translucent blue */
 }
 
-/* Right circle animation - scales to 5x size */
-.right-circle {
-    right: -200px; /* Start position off-screen */
-    animation-name: moveRight;
-    background: rgb(216, 224, 166,0.7); /* Translucent orange */
-}
-
-/* New circle */
-.third-circle {
-    left: 100px;
-    top: 400px; /* Adjust position to fit below the other circles */
-    background-color: rgb(216, 224, 182,0.7); /* Translucent red */
-    animation-name: moveRightToSquare;
-}
-
-/* Animation for third circle (moves right, transforms into a square with rounded corners) */
-@keyframes moveRightToSquare {
-    0% {
-        left: 100px;
-        transform: scale(1); /* Start as a circle */
-        border-radius: 50%; /* Circle */
-    }
-    50% {
-        left: calc(50% - 100px); /* Move right */
-        transform: scale(5); /* Grow in size */
-        border-radius: 50%; /* Still a circle */
-    }
-    100% {
-        left: calc(50% - 100px); /* Move further right */
-        transform: scale(5); /* Return to normal size */
-        border-radius: 20px; /* Become a square with rounded corners */
-    }
-}
-
-
-
-        
+     
 /* Animation for left circle (moves in, then scales to 10x) */
 @keyframes moveLeft {
     0% { left: 100px; }
@@ -160,12 +124,36 @@
     100% { left: calc(50% -400px); transform: scale(1.5); top: 20px; font-size: 1rem; } /* Scale to 10x */
 }
 
-/* Animation for right circle (moves in, then scales to 5x) */
-@keyframes moveRight {
-    0% { right: 100px; }
-    50% { right: calc(50% - 200px); transform: scale(1); top: 250px; font-size: 1rem;  } /* Move to position */
-    100% { right: calc(50% - 200px); transform: scale(5); top: 300px; font-size: 0.8rem;} /* Scale to 5x */
+
+        /* Container to hold the sentences */
+.text-container {
+    position: relative;
+    width: 100%;
+    height: 100px; /* Adjust the height as needed */
+    overflow: hidden; /* Ensures the text starts hidden and animates in */
+    display: flex;
+    align-items: center;
 }
+
+/* Style for the moving sentences */
+.moving-text {
+    position: absolute;
+    white-space: nowrap; /* Keeps text in a single line */
+    font-size: 24px;
+    animation: moveText 10s linear infinite; /* Adjust duration for speed */
+    color: #333;
+}
+
+/* Animation to move the text from right to left */
+@keyframes moveText {
+    0% {
+        transform: translateX(100%); /* Start from outside the right edge */
+    }
+    100% {
+        transform: translateX(-100%); /* Move completely off to the left */
+    }
+}
+
 
 
 
@@ -290,14 +278,19 @@
         <div class="circle left-circle">
             <span>About Us</span>
         </div>
-        <div class="circle right-circle">
-            <span></span>
-        </div>
+<div class="text-container">
+    <div class="moving-text">
+      <b>HORTIVISION</b> is dedicated to modernizing horticulture 
+      with innovative solutions and data-driven insights.
+  
+      <b>Mission Statement:</b> is to empowering farmers with digital tech 
+      to boost efficiency and sustainability. 
 
-        <div class="circle third-circle">
-    <span>HORTIVISION is dedicated to modernizing horticulture</span>
-        <span>with innovative solutions and data-driven insights.</span>
+      <b>Our Values:</b> is to committed to sustainability, innovation, and 
+      collaboration, empowering farmers for a hunger-free world.
+    </div>
 </div>
+
 
     </div>
 </div>
