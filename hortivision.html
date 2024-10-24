@@ -127,6 +127,12 @@
 }
 
 
+        .circle-container.in-view, {
+    opacity: 0;
+    transform: translateY(50px); /* Move them down */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Animate properties */
+}
+
 
 
 
@@ -168,9 +174,14 @@
         }
         
 
-.circle-container.in-view, .moving-text-container.in-view {
-    opacity: 1;
-    transform: translateY(0);
+
+        
+        
+        
+.moving-text-container.in-view {
+    opacity: 0;
+    transform: translateY(50px); /* Move them down */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Animate properties */
 }
 
 
@@ -371,33 +382,33 @@
     </footer>
 
    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Intersection Observer for scroll-triggered animations
-        const blocks = document.querySelectorAll('.block');
-        const circleContainer = document.querySelector('.circle-container');
-        const movingTextContainer = document.querySelector('.moving-text-container');
+   document.addEventListener("DOMContentLoaded", function() {
+            // Intersection Observer for scroll-triggered animations
+            const blocks = document.querySelectorAll('.block');
+            const circleContainer = document.querySelector('.circle-container');
+            const movingTextContainer = document.querySelector('.moving-text-container');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    console.log(`${entry.target.className} is in view`);
-                    entry.target.classList.add('in-view');
-                } else {
-                    console.log(`${entry.target.className} is out of view`);
-                    entry.target.classList.remove('in-view');
-                }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        console.log(`${entry.target.className} is in view`);
+                        entry.target.classList.add('in-view');
+                    } else {
+                        console.log(`${entry.target.className} is out of view`);
+                        entry.target.classList.remove('in-view');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the block is visible
             });
-        }, {
-            threshold: 0.2 // Trigger when 20% of the block is visible
-        });
 
-        // Observe each block and the circle and text containers
-        blocks.forEach(block => {
-            observer.observe(block);
+            // Observe each block and the circle and text containers
+            blocks.forEach(block => {
+                observer.observe(block);
+            });
+            observer.observe(circleContainer);
+            observer.observe(movingTextContainer);
         });
-        observer.observe(circleContainer);
-        observer.observe(movingTextContainer);
-    });
 </script>
 
 
