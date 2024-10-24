@@ -81,92 +81,76 @@
             }
         }
 
-.circle-container {
-    position: relative;
-    height: 400px; /* Increased height to accommodate larger circles */
-    margin-top: 3rem;
-    top: 60px;
-}
+        .circle-container {
+            position: relative;
+            height: 400px;
+            margin-top: 3rem;
+            top: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
 
-/* Base circle style */
-.circle {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background-color: rgba(67, 160, 71, 0.7); /* Translucent green */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    color: white;
-    position: absolute;
-    animation-duration: 2s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards; /* Keeps the animation state after it finishes */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 3D shadow effect */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Text shadow for better visibility */
-    transform-style: preserve-3d; /* Enables 3D transforms */
-    transition: font-size 0.5s ease; /* Ensures smooth font resizing */
-}
-
-/* Left circle animation - scales to 10x size */
-.left-circle {
-    left: 200px; /* Start position off-screen */
-    animation-name: moveLeft;
-    background: rgb(216, 224, 199, 0.7); /* Translucent blue */
-}
-
-     
-/* Animation for left circle (moves in, then scales to 10x) */
-@keyframes moveLeft {
-    0% { left: 100px; }
-    50% { left: calc(50% - 500px); transform: scale(2); top: 80px; font-size: 0.8rem  } /* Move to position */
-    100% { left: calc(50% - 390px); transform: scale(1.5); top: 20px; font-size: 1.5rem; } /* Scale to 10x */
-}
-
-
-
-
-
-  .moving-text-container {
-            width: 100%; /* Full width of the page */
-            height: 300px; /* Adjust height as needed */
-            position: relative; /* Relative positioning for the container */
+        .circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: rgba(67, 160, 71, 0.7);
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* Hide overflow if needed */
+            font-size: 1.2rem;
+            color: white;
+            position: absolute;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            transform-style: preserve-3d;
         }
 
-        /* Paragraph that will move from right to center */
+        .left-circle {
+            left: 200px;
+            animation-name: moveLeft;
+            background: rgb(216, 224, 199, 0.7);
+        }
+
+        @keyframes moveLeft {
+            0% { left: 100px; }
+            50% { left: calc(50% - 500px); transform: scale(2); top: 80px; font-size: 0.8rem }
+            100% { left: calc(50% - 390px); transform: scale(1.5); top: 20px; font-size: 1.5rem; }
+        }
+
+        .moving-text-container {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
         .moving-text {
             position: absolute;
-            white-space: normal; /* Allow text wrapping */
-            max-width: 50%; /* Limit the width of the paragraph */
-            right: -100%; /* Start off-screen (on the right) */
-            animation: moveToCenter 3s forwards; /* Apply animation and stop at the end */
-            font-size: 1.2rem; /* Adjust font size */
-            color: #333; /* Text color */
-            text-align: justify; /* Justify paragraph alignment */
+            white-space: normal;
+            max-width: 50%;
+            right: -100%;
+            animation: moveToCenter 3s forwards;
+            font-size: 1.2rem;
+            color: #333;
+            text-align: justify;
         }
 
-        /* Keyframes for moving text */
         @keyframes moveToCenter {
-            0% {
-                right: -100%; /* Start off-screen on the right */
-            }
-            80% {
-                right: 20%; /* Moving to slightly right of the center */
-            }
-            100% {
-                right: 23%; /* Final resting position slightly right of center */
-            }
+            0% { right: -100%; }
+            80% { right: 20%; }
+            100% { right: 23%; }
         }
-
-
-        
-
-
 
         .block-container {
             display: grid;
@@ -184,8 +168,8 @@
             cursor: pointer;
             height: 500px;
             position: relative;
-            opacity: 0; /* Hidden initially */
-            transform: translateY(30px); /* Move down initially */
+            opacity: 0;
+            transform: translateY(30px);
         }
 
         .block img, .block video {
@@ -194,10 +178,9 @@
             object-fit: cover;
         }
 
-        .block.in-view {
+        .block.in-view, .circle-container.in-view, .moving-text-container.in-view {
             opacity: 1;
             transform: translateY(0);
-            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .overlay {
@@ -278,109 +261,68 @@
         <h1>HORTIVISION</h1>
         <p>Your vision for modern horticulture</p>
     </header>
- <div class="about-us">
-   
 
-     <div class="about-us">
-    <h2></h2>
-    <p></p>
-    
     <div class="circle-container">
         <div class="circle left-circle">
             <span>About Us</span>
         </div>
-<div class="text-container">
-    <div class="moving-text">
-      <p><b>HORTIVISION</b> is dedicated to modernizing horticulture</p>
-      <p>with innovative solutions and data-driven insights.</p>
-        
-  
-      <p><b>MISSION STATEMENT:</b> is to empowering farmers with</p>
-<p>digital tech to boost efficiency and sustainability.</p>
-
-       <p><b>OUR VALUES:</b> is to committed to sustainability, innovation, and </p>
-      <p>collaboration, empowering farmers for a hunger-free world.</p>
     </div>
-</div>
 
-
+    <div class="moving-text-container">
+        <div class="moving-text">
+            <p><b>HORTIVISION</b> is dedicated to modernizing horticulture with innovative solutions and data-driven insights.</p>
+            <p><b>MISSION STATEMENT:</b> Empowering farmers with digital tech to boost efficiency and sustainability.</p>
+            <p><b>OUR VALUES:</b> Committed to sustainability, innovation, and collaboration, empowering farmers for a hunger-free world.</p>
+        </div>
     </div>
-</div>
 
-
-
-     
     <div class="block-container">
         <div class="block">
-            <img src="img1.jpg" alt="Image 1">
+            <img src="img/1.jpg" alt="Block 1">
             <div class="overlay">
-                <h3>Tutorial</h3>
+                <h3>Block 1</h3>
             </div>
         </div>
-
         <div class="block">
-            <video autoplay loop muted>
-                <source src="video2.mp4" type="video/mp4">
-            </video>
+            <img src="img/2.jpg" alt="Block 2">
             <div class="overlay">
-                <h3>Real-Time Data</h3>
+                <h3>Block 2</h3>
             </div>
         </div>
-
         <div class="block">
-            <img src="image3c.jpg" alt="Image 3">
+            <img src="img/3.jpg" alt="Block 3">
             <div class="overlay">
-                <h3>Market Sales</h3>
-            </div>
-        </div>
-
-        <div class="block">
-            <img src="image4b.jpeg" alt="Image 4">
-            <div class="overlay">
-                <h3>Food Sharing Map</h3>
-            </div>
-        </div>
-
-        <div class="block">
-            <img src="image5a.png" alt="Image 5">
-            <div class="overlay">
-                <h3>Fundraising</h3>
-            </div>
-        </div>
-
-        <div class="block">
-            <img src="image6b.jpg" alt="Image 6">
-            <div class="overlay">
-                <h3>Discussion Board</h3>
+                <h3>Block 3</h3>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 HORTIVISION. All rights reserved.</p>
+        <p>&copy; 2024 HORTIVISION. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // Intersection Observer for scroll-triggered animations
         const blocks = document.querySelectorAll('.block');
+        const circleContainer = document.querySelector('.circle-container');
+        const movingTextContainer = document.querySelector('.moving-text-container');
 
-        const observer = new IntersectionObserver((entries) => {
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-view');
-                } else {
-                    entry.target.classList.remove('in-view');
+                    observer.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.2 // Trigger when 30% of the block is visible
-        });
+        }, observerOptions);
 
-        blocks.forEach(block => {
-            observer.observe(block);
-        });
-
+        blocks.forEach(block => observer.observe(block));
+        observer.observe(circleContainer);
+        observer.observe(movingTextContainer);
     </script>
-
 </body>
 </html>
