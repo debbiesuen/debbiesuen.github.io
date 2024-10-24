@@ -86,8 +86,6 @@
     height: 400px; /* Increased height to accommodate larger circles */
     margin-top: 3rem;
     top: 60px;
-     opacity: 0; /* Start hidden */
-    transition: opacity 0.5s, transform 0.5s; /* Smooth transition */
 }
 
 /* Base circle style */
@@ -127,12 +125,6 @@
 }
 
 
-        .circle-container.in-view, {
-    opacity: 0;
-    transform: translateY(50px); /* Move them down */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Animate properties */
-}
-
 
 
 
@@ -144,8 +136,6 @@
             justify-content: center;
             align-items: center;
             overflow: hidden; /* Hide overflow if needed */
-       opacity: 0; /* Start hidden */
-    transition: opacity 0.5s, transform 0.5s; /* Smooth transition */
         }
 
         /* Paragraph that will move from right to center */
@@ -172,17 +162,6 @@
                 right: 23%; /* Final resting position slightly right of center */
             }
         }
-        
-
-
-        
-        
-        
-.moving-text-container.in-view {
-    opacity: 0;
-    transform: translateY(50px); /* Move them down */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Animate properties */
-}
 
 
         
@@ -381,37 +360,27 @@
         <p>&copy; 2024 HORTIVISION. All rights reserved.</p>
     </footer>
 
- <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    <script>
         // Intersection Observer for scroll-triggered animations
         const blocks = document.querySelectorAll('.block');
-        const circleContainer = document.querySelector('.circle-container');
-        const movingTextContainer = document.querySelector('.moving-text-container');
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    console.log(`${entry.target.className} is in view`);
                     entry.target.classList.add('in-view');
                 } else {
-                    console.log(`${entry.target.className} is out of view`);
                     entry.target.classList.remove('in-view');
                 }
             });
         }, {
-            threshold: 0.2 // Trigger when 20% of the block is visible
+            threshold: 0.2 // Trigger when 30% of the block is visible
         });
 
-        // Observe each block and the circle and text containers
         blocks.forEach(block => {
             observer.observe(block);
         });
-        observer.observe(circleContainer);
-        observer.observe(movingTextContainer);
-    });
-</script>
 
-
+    </script>
 
 </body>
 </html>
