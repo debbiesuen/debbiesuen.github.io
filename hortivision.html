@@ -162,6 +162,12 @@
                 right: 23%; /* Final resting position slightly right of center */
             }
         }
+        
+
+.circle-container.in-view, .moving-text-container.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 
         
@@ -379,6 +385,14 @@
         blocks.forEach(block => {
             observer.observe(block);
         });
+
+
+        const circleContainer = document.querySelector('.circle-container');
+const movingTextContainer = document.querySelector('.moving-text-container');
+
+observer.observe(circleContainer);
+observer.observe(movingTextContainer);
+
 
     </script>
 
