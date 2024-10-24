@@ -86,6 +86,8 @@
     height: 400px; /* Increased height to accommodate larger circles */
     margin-top: 3rem;
     top: 60px;
+     opacity: 0; /* Start hidden */
+    transition: opacity 0.5s, transform 0.5s; /* Smooth transition */
 }
 
 /* Base circle style */
@@ -136,6 +138,8 @@
             justify-content: center;
             align-items: center;
             overflow: hidden; /* Hide overflow if needed */
+       opacity: 0; /* Start hidden */
+    transition: opacity 0.5s, transform 0.5s; /* Smooth transition */
         }
 
         /* Paragraph that will move from right to center */
@@ -386,12 +390,20 @@
             observer.observe(block);
         });
 
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            console.log(`${entry.target.className} is in view`);
+            entry.target.classList.add('in-view');
+        } else {
+            console.log(`${entry.target.className} is out of view`);
+            entry.target.classList.remove('in-view');
+        }
+    });
+}, {
+    threshold: 0.2
+});
 
-        const circleContainer = document.querySelector('.circle-container');
-const movingTextContainer = document.querySelector('.moving-text-container');
-
-observer.observe(circleContainer);
-observer.observe(movingTextContainer);
 
 
     </script>
