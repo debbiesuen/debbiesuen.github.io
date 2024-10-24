@@ -370,43 +370,36 @@
         <p>&copy; 2024 HORTIVISION. All rights reserved.</p>
     </footer>
 
-    <script>
+   <script>
+    document.addEventListener("DOMContentLoaded", function() {
         // Intersection Observer for scroll-triggered animations
         const blocks = document.querySelectorAll('.block');
+        const circleContainer = document.querySelector('.circle-container');
+        const movingTextContainer = document.querySelector('.moving-text-container');
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    console.log(`${entry.target.className} is in view`);
                     entry.target.classList.add('in-view');
                 } else {
+                    console.log(`${entry.target.className} is out of view`);
                     entry.target.classList.remove('in-view');
                 }
             });
         }, {
-            threshold: 0.2 // Trigger when 30% of the block is visible
+            threshold: 0.2 // Trigger when 20% of the block is visible
         });
 
+        // Observe each block and the circle and text containers
         blocks.forEach(block => {
             observer.observe(block);
         });
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            console.log(`${entry.target.className} is in view`);
-            entry.target.classList.add('in-view');
-        } else {
-            console.log(`${entry.target.className} is out of view`);
-            entry.target.classList.remove('in-view');
-        }
+        observer.observe(circleContainer);
+        observer.observe(movingTextContainer);
     });
-}, {
-    threshold: 0.2
-});
+</script>
 
-
-
-    </script>
 
 </body>
 </html>
