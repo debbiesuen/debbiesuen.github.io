@@ -127,7 +127,30 @@
 
 
 
-        
+        /* Circle styles (keep existing ones, adding opacity and transform for animation) */
+.circle {
+    opacity: 0;
+    transform: translateY(30px); /* Start below the view */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.circle.in-view, .moving-text-container.in-view {
+    opacity: 1;
+    transform: translateY(0); /* Moves back to its original position */
+}
+
+
+        /* Moving text container animation start */
+.moving-text-container {
+    opacity: 0; /* Initially hidden */
+    transform: translateX(100px); /* Start off-screen */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.moving-text-container.in-view {
+    transform: translateX(0); /* Moves text to center */
+}
+
   .moving-text-container {
             width: 100%; /* Full width of the page */
             height: 300px; /* Adjust height as needed */
@@ -379,6 +402,42 @@
         blocks.forEach(block => {
             observer.observe(block);
         });
+
+
+
+
+    // Intersection Observer for scroll-triggered animations
+    const blocks = document.querySelectorAll('.block');
+    const circles = document.querySelectorAll('.circle');
+    const movingTextContainers = document.querySelectorAll('.moving-text-container');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            } else {
+                entry.target.classList.remove('in-view');
+            }
+        });
+    }, {
+        threshold: 0.1 // Trigger when 10% of the element is visible
+    });
+
+    blocks.forEach(block => {
+        observer.observe(block);
+    });
+
+    circles.forEach(circle => {
+        observer.observe(circle);
+    });
+
+    movingTextContainers.forEach(movingTextContainer => {
+        observer.observe(movingTextContainer);
+    });
+
+
+
+        
     </script>
 </body>
 </html>
