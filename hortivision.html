@@ -123,7 +123,10 @@
     50% { left: calc(50% - 500px); transform: scale(2); top: 80px; font-size: 0.8rem  } /* Move to position */
     100% { left: calc(50% - 390px); transform: scale(1.5); top: 20px; font-size: 1.5rem; } /* Scale to 10x */
 }
-
+   .circle.in-view {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
 
 
 
@@ -163,7 +166,10 @@
             }
         }
 
-
+   .moving-text.in-view {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         
 
 
@@ -380,6 +386,50 @@
             observer.observe(block);
         });
 
+
+        
+        const blocks = document.querySelectorAll('.moving-text');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                } else {
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        }, {
+            threshold: 0.2 // Trigger when 30% of the block is visible
+        });
+
+        .moving-text.forEach(moving-text => {
+            observer.observe(moving-text);
+        });
+
+
+        
+        const blocks = document.querySelectorAll('.circle');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                } else {
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        }, {
+            threshold: 0.2 // Trigger when 30% of the block is visible
+        });
+
+        .circle.forEach(circle => {
+            observer.observe(circle);
+        });
+
+
+
+
+        
     </script>
 
 </body>
