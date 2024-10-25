@@ -3,61 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market Sales - HORTIVISION</title>
+    <title>Market Sales - Online Shopping</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #eff9ef;
-            margin: 0;
-            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f4;
+            color: #333;
         }
-
         header {
             background-color: #4CAF50;
             color: white;
             text-align: center;
-            padding: 1rem 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
         }
-
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
         }
-
-        .products-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
         }
-
+        .search-bar {
+            margin: 20px;
+            text-align: center;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
         .product {
             background-color: white;
-            padding: 1rem;
+            border: 1px solid #ddd;
             border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
             text-align: center;
-            transition: transform 0.3s ease;
         }
-
-        .product:hover {
-            transform: scale(1.05);
-        }
-
         .product img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 10px;
         }
-
         .product h3 {
-            margin: 1rem 0;
-            font-size: 1.5rem;
+            margin: 15px 0;
         }
 
-        .product p {
+         .product p {
             font-size: 1.2rem;
             margin: 0.5rem 0;
         }
@@ -81,54 +88,76 @@
         .product button:hover {
             background-color: #45a049;
         }
-
+        
+        
         footer {
+            text-align: center;
+            padding: 1rem;
             background-color: #4CAF50;
             color: white;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
         }
-
     </style>
 </head>
 <body>
-
     <header>
-        <h1>Market Sales - HORTIVISION</h1>
+        <h1>Market Sales - Shop Online</h1>
     </header>
 
-    <div class="products-container">
+    <!-- Button Navigation -->
+    <div class="button-container">
+        <button onclick="window.location.href='marketsales.html'">Market Sales</button>
+        <button onclick="window.location.href='connectbuyers.html'">Connecting Buyers</button>
+        <button onclick="window.location.href='connectsellers.html'">Connecting Sellers</button>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search products...">
+    </div>
+
+    <div class="products">
+        <!-- Product 1 -->
         <div class="product">
             <img src="product1.jpg" alt="Product 1">
-            <h3>Fresh Tomatoes</h3>
-            <p>Delicious and organic tomatoes.</p>
-            <p class="price">$4.99 / kg</p>
+            <h3>Fresh Vegetables</h3>
+            <p>$10 per kg</p>
             <button>Add to Cart</button>
         </div>
-
+        <!-- Product 2 -->
         <div class="product">
             <img src="product2.jpg" alt="Product 2">
-            <h3>Green Peppers</h3>
-            <p>Organic green peppers perfect for salads.</p>
-            <p class="price">$2.99 / kg</p>
+            <h3>Organic Fruits</h3>
+            <p>$12 per kg</p>
+            <button>Add to Cart</button>
+        </div>
+        <!-- Add more products as needed -->
+        <div class="product">
+            <img src="product4.jpg" alt="Product 1">
+            <h3>Fresh Vegetables</h3>
+            <p>$10 per kg</p>
             <button>Add to Cart</button>
         </div>
 
         <div class="product">
-            <img src="product3.jpg" alt="Product 3">
-            <h3>Fresh Carrots</h3>
-            <p>Crunchy, fresh carrots from local farms.</p>
-            <p class="price">$3.49 / kg</p>
+            <img src="product3.jpg" alt="Product 1">
+            <h3>Fresh Vegetables</h3>
+            <p>$10 per kg</p>
             <button>Add to Cart</button>
         </div>
 
-        <!-- Add more products as needed -->
+        <div class="product">
+            <img src="product2.jpg" alt="Product 1">
+            <h3>Fresh Vegetables</h3>
+            <p>$10 per kg</p>
+            <button>Add to Cart</button>
+        </div>
+
+
+
+        
     </div>
 
     <footer>
-        <p>&copy; 2024 HORTIVISION. All rights reserved.</p>
+        <p>&copy; 2024 Market Sales. All Rights Reserved.</p>
     </footer>
-
 </body>
 </html>
