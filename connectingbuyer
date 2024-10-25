@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connecting Buyers</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+        .search-bar {
+            margin: 20px;
+            text-align: center;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+        .buyers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .buyer {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        .buyer img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .buyer h3 {
+            margin: 10px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Connecting Buyers</h1>
+    </header>
+
+    <!-- Button Navigation -->
+    <div class="button-container">
+        <button onclick="window.location.href='marketsales.html'">Market Sales</button>
+        <button onclick="window.location.href='connectbuyers.html'">Connecting Buyers</button>
+        <button onclick="window.location.href='connectsellers.html'">Connecting Sellers</button>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search buyers...">
+    </div>
+
+    <div class="buyers">
+        <!-- Buyer 1 -->
+        <div class="buyer">
+            <img src="buyer1-logo.jpg" alt="Buyer 1 Logo">
+            <h3>Buyer 1</h3>
+            <p>Email: buyer1@example.com</p>
+        </div>
+        <!-- Buyer 2 -->
+        <div class="buyer">
+            <img src="buyer2-logo.jpg" alt="Buyer 2 Logo">
+            <h3>Buyer 2</h3>
+            <p>Email: buyer2@example.com</p>
+        </div>
+        <!-- Add more buyers as needed -->
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Connecting Buyers. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
