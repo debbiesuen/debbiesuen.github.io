@@ -78,9 +78,9 @@
 
     <!-- Button Navigation -->
     <div class="button-container">
-        <button onclick="window.location.href='marketsales.html'">Market Sales</button>
-        <button onclick="window.location.href='connectbuyers.html'">Connecting Buyers</button>
-        <button onclick="window.location.href='connectsellers.html'">Connecting Sellers</button>
+        <button onclick="window.location.href='market-sales.html'">Market Sales</button>
+        <button onclick="window.location.href='connectingbuyer.html'">Connecting Buyers</button>
+        <button onclick="window.location.href='connectingseller.html'">Connecting Sellers</button>
     </div>
 
     <div class="search-bar">
