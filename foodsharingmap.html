@@ -4,55 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Sharing Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <style>
-        /* Set the size of the map */
         #map {
-            height: 500px;
+            height: 600px;
             width: 100%;
+        }
+        .popup-content {
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
 
-<h3>Food Sharing Map</h3>
-<div id="map"></div>
+    <h1>Food Sharing Map</h1>
+    <div id="map"></div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
-<script>
-    function initMap() {
-        // Create a map centered on a specific location
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
-            center: { lat: 40.730610, lng: -73.935242 } // Example: New York City
-        });
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([51.505, -0.09], 13);  // Default location (London)
 
-        // Array of food locations (latitude, longitude, and food type)
+        // Set the tile layer for the map (you can change this to a different provider)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Sample food locations with latitude, longitude, and food type
         var foodLocations = [
-            { lat: 40.730610, lng: -73.935242, food: 'Pizza' },
-            { lat: 40.755534, lng: -73.977763, food: 'Burgers' },
-            { lat: 40.689247, lng: -74.044502, food: 'Sushi' },
-            { lat: 40.748817, lng: -73.985428, food: 'Tacos' }
+            { lat: 51.505, lon: -0.09, food: "Pizza", description: "Hot pepperoni pizza!" },
+            { lat: 51.515, lon: -0.1, food: "Sushi", description: "Fresh sushi rolls." },
+            { lat: 51.525, lon: -0.11, food: "Burger", description: "Juicy beef burger." },
+            { lat: 51.535, lon: -0.12, food: "Pasta", description: "Delicious spaghetti." }
         ];
 
-        // Loop through the food locations and add markers
+        // Loop through the food locations and add markers to the map
         foodLocations.forEach(function(location) {
-            var marker = new google.maps.Marker({
-                position: { lat: location.lat, lng: location.lng },
-                map: map,
-                title: location.food
-            });
-
-            // Info window that shows the food type
-            var infowindow = new google.maps.InfoWindow({
-                content: '<strong>' + location.food + '</strong>'
-            });
-
-            marker.addListener('click', function() {
-                infowindow.open(map, marker);
-            });
+            var marker = L.marker([location.lat, location.lon]).addTo(map);
+            marker.bindPopup(`
+                <div class="popup-content">
+                    <strong>Food: </strong>${location.food} <br>
+                    <strong>Description: </strong>${location.description}
+                </div>
+            `);
         });
-    }
-</script>
-
+    </script>
+    
 </body>
 </html>
