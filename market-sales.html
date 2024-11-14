@@ -51,13 +51,28 @@
             gap: 1.5rem;
             margin-top: 2rem;
         }
-        .product {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            width: 300px;
-            text-align: center;
+       .product {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-sizing: border-box; /* Ensures padding doesn’t affect the width */
+}
+
+.image-container {
+    width: 100%;     /* Container takes full width of the product */
+    height: 200px;   /* Fixed height */
+    overflow: hidden; /* Hides overflow, preventing image from exceeding container */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the container without stretching */
+}
+
         }
         .product img {
             width: 100%;
@@ -93,7 +108,7 @@
         .product button:hover {
             background-color: #45a049;
         }
-
+        
         
         
         footer {
@@ -124,11 +139,15 @@
     <div class="products">
         <!-- Product 1 -->
         <div class="product">
+              <div class="image-container">
             <img src="product.jpg" alt="Product 1">
+                    </div>
             <h3>Mushroom</h3>
             <p>$20 per kg</p>
             <button>Add to Cart</button>
         </div>
+
+        
         <!-- Product 2 -->
         <div class="product">
             <img src="product2.jpg" alt="Product 2">
