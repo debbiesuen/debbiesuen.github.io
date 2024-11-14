@@ -61,7 +61,8 @@
 .image-container {
     width: 100%;     /* Container takes full width of the product */
     height: 250px;   /* Fixed height */
-    overflow: hidden; /* Hides overflow, preventing image from exceeding container */
+    overflow: hidden;   /* Hide any overflow to keep image within block */
+    position: relative; /* Required if you add absolute positioning for the image */
 }
 
 .image-container img {
