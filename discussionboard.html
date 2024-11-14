@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .post-form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .post-form input,
+        .post-form textarea {
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .post-form button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .post-form button:hover {
+            background-color: #45a049;
+        }
+
+        .posts {
+            margin-top: 20px;
+        }
+
+        .post {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .post h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .post p {
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Discussion Board</h1>
+
+        <!-- Post Form -->
+        <div class="post-form">
+            <input type="text" id="userName" placeholder="Enter your name" required>
+            <textarea id="message" placeholder="Write your message..." rows="4" required></textarea>
+            <button onclick="postMessage()">Post</button>
+        </div>
+
+        <!-- Display Posts -->
+        <div class="posts" id="posts">
+            <!-- Posts will appear here -->
+        </div>
+    </div>
+
+    <script>
+        function postMessage() {
+            // Get values from input fields
+            const userName = document.getElementById('userName').value;
+            const message = document.getElementById('message').value;
+
+            // Check if the fields are not empty
+            if (userName.trim() === '' || message.trim() === '') {
+                alert('Please enter both your name and a message.');
+                return;
+            }
+
+            // Create a new post element
+            const postContainer = document.createElement('div');
+            postContainer.classList.add('post');
+
+            const postTitle = document.createElement('h3');
+            postTitle.textContent = userName;
+
+            const postMessage = document.createElement('p');
+            postMessage.textContent = message;
+
+            postContainer.appendChild(postTitle);
+            postContainer.appendChild(postMessage);
+
+            // Append the post to the posts container
+            document.getElementById('posts').prepend(postContainer);
+
+            // Clear the input fields
+            document.getElementById('userName').value = '';
+            document.getElementById('message').value = '';
+        }
+    </script>
+</body>
+</html>
