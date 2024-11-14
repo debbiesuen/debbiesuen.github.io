@@ -16,44 +16,51 @@
     <!-- Google Maps API Script (Make sure to replace YOUR_API_KEY with your actual API key) -->
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
     <script>
-        // Function to initialize the map
+        // Initialize the map
+        let map;
+        let markers = []; // Store the markers added by users
+
         function initMap() {
-            // Set the initial map center and zoom level
-            var map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: 51.505, lng: -0.09 }, // Default location (London)
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 51.505, lng: -0.09 }, // Default center (London)
                 zoom: 13
             });
 
-            // Sample food locations with latitude, longitude, and food type
-            var foodLocations = [
-                { lat: 51.505, lng: -0.09, food: "Pizza", description: "Hot pepperoni pizza!" },
-                { lat: 51.515, lng: -0.1, food: "Sushi", description: "Fresh sushi rolls." },
-                { lat: 51.525, lng: -0.11, food: "Burger", description: "Juicy beef burger." },
-                { lat: 51.535, lng: -0.12, food: "Pasta", description: "Delicious spaghetti." }
-            ];
+            // Allow users to click on the map to add a marker
+            map.addListener("click", function(event) {
+                // Prompt user for food name and description
+                const foodName = prompt("Enter the name of the food:");
+                const foodDescription = prompt("Enter a brief description of the food:");
 
-            // Add markers to the map
-            foodLocations.forEach(function(location) {
-                var marker = new google.maps.Marker({
-                    position: { lat: location.lat, lng: location.lng },
-                    map: map,
-                    title: location.food
-                });
+                if (foodName && foodDescription) {
+                    // Add marker at clicked location
+                    const marker = new google.maps.Marker({
+                        position: event.latLng,
+                        map: map,
+                        title: foodName
+                    });
 
-                // Create an info window for each marker
-                var infoWindow = new google.maps.InfoWindow({
-                    content: `
-                        <div class="popup-content">
-                            <strong>Food: </strong>${location.food} <br>
-                            <strong>Description: </strong>${location.description}
-                        </div>
-                    `
-                });
+                    // Store the marker data
+                    markers.push({
+                        position: event.latLng,
+                        food: foodName,
+                        description: foodDescription
+                    });
 
-                // Open the info window when the marker is clicked
-                marker.addListener("click", function() {
-                    infoWindow.open(map, marker);
-                });
+                    // Create and display an info window for the marker
+                    const infoWindow = new google.maps.InfoWindow({
+                        content: `
+                            <div class="popup-content">
+                                <strong>Food: </strong>${foodName} <br>
+                                <strong>Description: </strong>${foodDescription}
+                            </div>
+                        `
+                    });
+
+                    marker.addListener("click", function() {
+                        infoWindow.open(map, marker);
+                    });
+                }
             });
         }
     </script>
