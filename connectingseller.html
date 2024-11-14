@@ -59,21 +59,27 @@
         }
 
 .image-container {
-    width: 100%;         /* Full width of the container */
-    height: 200px;       /* Fixed height for a rectangular shape */
-    overflow: hidden;    /* Prevents overflow from showing */
+    width: 100%;            /* Full width of the container */
+    height: 250px;          /* Increased height for a larger display */
+    overflow: hidden;       /* Prevents overflow */
     position: relative;
 }
 
 .image-container img {
-    width: auto;         /* Allows the width to adapt */
-    height: 100%;        /* Scales to fill the height without cutting off */
-    object-fit: contain; /* Ensures the entire logo is visible within the container */
+    width: auto;            /* Allows the width to adapt */
+    height: 120%;           /* Enlarges the image within the container */
+    object-fit: contain;    /* Ensures the entire logo fits */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /* Centers the image */
+    transition: transform 0.3s ease;  /* Smooth zoom effect */
 }
+
+.image-container:hover img {
+    transform: translate(-50%, -50%) scale(1.1); /* Zooms in on hover */
+}
+
 
 
 
