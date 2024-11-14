@@ -3,72 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Sharing Map</title>
+    <title>Test Google Maps API</title>
     <style>
         #map {
-            height: 600px;
+            height: 400px;
             width: 100%;
         }
-        .popup-content {
-            font-size: 16px;
-        }
     </style>
-    <!-- Google Maps API Script with your API key -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
-    <script>
-        // Initialize the map
-        let map;
-        let markers = []; // Store the markers added by users
-
-        function initMap() {
-            map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: 51.505, lng: -0.09 }, // Default center (London)
-                zoom: 13
-            });
-
-            // Allow users to click on the map to add a marker
-            map.addListener("click", function(event) {
-                // Prompt user for food name and description
-                const foodName = prompt("Enter the name of the food:");
-                const foodDescription = prompt("Enter a brief description of the food:");
-
-                if (foodName && foodDescription) {
-                    // Add marker at clicked location
-                    const marker = new google.maps.Marker({
-                        position: event.latLng,
-                        map: map,
-                        title: foodName
-                    });
-
-                    // Store the marker data
-                    markers.push({
-                        position: event.latLng,
-                        food: foodName,
-                        description: foodDescription
-                    });
-
-                    // Create and display an info window for the marker
-                    const infoWindow = new google.maps.InfoWindow({
-                        content: `
-                            <div class="popup-content">
-                                <strong>Food: </strong>${foodName} <br>
-                                <strong>Description: </strong>${foodDescription}
-                            </div>
-                        `
-                    });
-
-                    marker.addListener("click", function() {
-                        infoWindow.open(map, marker);
-                    });
-                }
-            });
-        }
-    </script>
 </head>
 <body>
 
-    <h1>Food Sharing Map</h1>
+    <h1>Test Google Maps API</h1>
     <div id="map"></div>
 
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 8
+            });
+        }
+    </script>
+
+    <!-- Replace YOUR_API_KEY with your actual Google Maps API key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 </body>
 </html>
