@@ -57,28 +57,19 @@
             width: 300px;
             box-sizing: border-box; /* Ensures padding doesn’t affect the width */
         }
-
+        
 .image-container {
-    width: 100%;            /* Full width of the container */
-    height: 350px;          /* Increased height for a larger display */
-    overflow: hidden;       /* Prevents overflow */
-    position: relative;
+    width: 100%;     /* Container takes full width of the product */
+    height: 200px;   /* Fixed height */
+    overflow: hidden; /* Hides overflow, preventing image from exceeding container */
 }
 
 .image-container img {
-    width: auto;            /* Allows the width to adapt naturally */
-    height: 140%;           /* Enlarges the image even further */
-    object-fit: contain;    /* Ensures the full logo is visible */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centers the image */
-    transition: transform 0.3s ease;  /* Smooth zoom effect */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the container without stretching */
 }
 
-.image-container:hover img {
-    transform: translate(-50%, -50%) scale(1.2); /* Further zooms in on hover */
-}
 
 
 
