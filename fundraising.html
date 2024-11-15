@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraising Campaign</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 1rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        .description {
+            margin: 20px 0;
+        }
+        .donate-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin: 15px 0;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Help Us Make a Difference</h1>
+</header>
+
+<div class="container">
+    <div class="description">
+        <p>We are raising funds to support [cause/organization name]. Your contributions will help us achieve our goal of [state purpose]. Every donation, no matter how small, brings us one step closer to making a real impact!</p>
+    </div>
+
+    <div class="donate-form">
+        <h2>Donate Now</h2>
+        <form action="/submit_donation" method="post">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="amount">Donation Amount (USD)</label>
+                <input type="number" id="amount" name="amount" min="1" required>
+            </div>
+            <button type="submit">Donate</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>Thank you for your generosity! Together, we can make a difference.</p>
+    </footer>
+</div>
+
+</body>
+</html>
