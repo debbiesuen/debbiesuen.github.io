@@ -17,6 +17,22 @@
             background-color:  #eff9ef;
             color: black;
             padding: 1rem;
+            position: relative;
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        .home-button:hover {
+            background-color: #45a049;
         }
         .container {
             max-width: 800px;
@@ -49,6 +65,11 @@
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield; /* Remove spin buttons in Firefox */
+            -webkit-appearance: none; /* Remove spin buttons in Webkit-based browsers */
         }
         button {
             background-color: #4CAF50;
@@ -63,21 +84,19 @@
             background-color: #45a049;
         }
         
-            footer {
+        footer {
             text-align: center;
             padding: 1rem;
             background-color: #eff9ef;
             color: black;
         }
-
-
-        
     </style>
 </head>
 <body>
 
 <header>
     <h1>Help Us Make a Difference</h1>
+    <a href="index.html" class="home-button">Home</a> <!-- Home Page Button -->
 </header>
 
 <div class="container">
