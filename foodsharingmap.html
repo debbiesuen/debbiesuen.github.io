@@ -66,8 +66,8 @@
     <!-- Leaflet JS Library -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        // Initialize the map
-        var map = L.map('map').setView([51.505, -0.09], 13); // Center map on a location
+        // Initialize the map centered on Taiwan
+        var map = L.map('map').setView([23.6978, 120.9605], 10); // Center map on Taiwan with zoom level 10
 
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -75,12 +75,16 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Food locations with descriptions
+        // Food locations with descriptions in Taiwan
         var foodLocations = [
-            { lat: 51.505, lng: -0.09, food: "Pizza", description: "Hot pepperoni pizza!" },
-            { lat: 51.515, lng: -0.1, food: "Sushi", description: "Fresh sushi rolls." },
-            { lat: 51.525, lng: -0.11, food: "Burger", description: "Juicy beef burger." },
-            { lat: 51.535, lng: -0.12, food: "Pasta", description: "Delicious spaghetti." }
+            { lat: 25.0330, lng: 121.5654, food: "Beef Noodles", description: "Delicious beef noodles in Taipei." }, // Taipei
+            { lat: 24.1477, lng: 120.6736, food: "Bubble Tea", description: "Famous bubble tea in Taichung." }, // Taichung
+            { lat: 22.6273, lng: 120.3014, food: "Taiwanese Sausages", description: "Grilled Taiwanese sausages in Kaohsiung." }, // Kaohsiung
+            { lat: 23.4730, lng: 120.9666, food: "Oyster Omelette", description: "Oyster omelette from Tainan." }, // Tainan
+            { lat: 22.9900, lng: 120.2133, food: "Pineapple Cake", description: "Fresh pineapple cakes in Kaohsiung." }, // Kaohsiung
+            { lat: 24.7980, lng: 121.7362, food: "Stinky Tofu", description: "Famous stinky tofu in Taipei." }, // Taipei
+            { lat: 24.1459, lng: 120.6850, food: "Hot Pot", description: "Authentic hot pot experience in Taichung." }, // Taichung
+            { lat: 23.5561, lng: 120.2650, food: "Gua Bao", description: "Braised pork belly bun in Tainan." } // Tainan
         ];
 
         // Add markers for each food location
