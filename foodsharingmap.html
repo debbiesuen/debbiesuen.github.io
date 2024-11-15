@@ -4,64 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Sharing Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
         #map {
+            flex: 1;
             height: 600px;
             width: 100%;
         }
-        .popup-content {
+        .header, .footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .footer {
+            font-size: 14px;
+        }
+        .button-container {
+            text-align: center;
+            margin: 20px;
+        }
+        .home-button {
+            padding: 10px 20px;
             font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
-    <!-- Google Maps API Script (Make sure to replace YOUR_API_KEY with your actual API key) -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
-    <script>
-        // Function to initialize the map
-        function initMap() {
-            // Set the initial map center and zoom level
-            var map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: 51.505, lng: -0.09 }, // Default location (London)
-                zoom: 13
-            });
-
-            // Sample food locations with latitude, longitude, and food type
-            var foodLocations = [
-                { lat: 51.505, lng: -0.09, food: "Pizza", description: "Hot pepperoni pizza!" },
-                { lat: 51.515, lng: -0.1, food: "Sushi", description: "Fresh sushi rolls." },
-                { lat: 51.525, lng: -0.11, food: "Burger", description: "Juicy beef burger." },
-                { lat: 51.535, lng: -0.12, food: "Pasta", description: "Delicious spaghetti." }
-            ];
-
-            // Add markers to the map
-            foodLocations.forEach(function(location) {
-                var marker = new google.maps.Marker({
-                    position: { lat: location.lat, lng: location.lng },
-                    map: map,
-                    title: location.food
-                });
-
-                // Create an info window for each marker
-                var infoWindow = new google.maps.InfoWindow({
-                    content: `
-                        <div class="popup-content">
-                            <strong>Food: </strong>${location.food} <br>
-                            <strong>Description: </strong>${location.description}
-                        </div>
-                    `
-                });
-
-                // Open the info window when the marker is clicked
-                marker.addListener("click", function() {
-                    infoWindow.open(map, marker);
-                });
-            });
-        }
-    </script>
 </head>
 <body>
 
-    <h1>Food Sharing Map</h1>
+    <!-- Header with Homepage Button -->
+    <header class="header">
+        <h1>Food Sharing Map</h1>
+    </header>
+
+    <!-- Button Container for Homepage Button -->
+    <div class="button-container">
+        <button class="home-button" onclick="window.location.href='index.html'">Go to Homepage</button>
+    </div>
+
+    <!-- Map Container -->
     <div id="map"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Food Sharing Map. All rights reserved.</p>
+    </footer>
+
+    <!-- Leaflet JS Library -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([51.505, -0.09], 13); // Center map on a location
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Food locations with descriptions
+        var foodLocations = [
+            { lat: 51.505, lng: -0.09, food: "Pizza", description: "Hot pepperoni pizza!" },
+            { lat: 51.515, lng: -0.1, food: "Sushi", description: "Fresh sushi rolls." },
+            { lat: 51.525, lng: -0.11, food: "Burger", description: "Juicy beef burger." },
+            { lat: 51.535, lng: -0.12, food: "Pasta", description: "Delicious spaghetti." }
+        ];
+
+        // Add markers for each food location
+        foodLocations.forEach(function(location) {
+            var marker = L.marker([location.lat, location.lng]).addTo(map);
+            marker.bindPopup(`<strong>Food: </strong>${location.food}<br><strong>Description: </strong>${location.description}`);
+        });
+    </script>
 
 </body>
 </html>
