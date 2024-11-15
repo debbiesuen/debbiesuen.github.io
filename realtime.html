@@ -45,7 +45,12 @@
 
     // Fetch weather data from OpenWeatherMap API
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('API request failed with status ' + response.status);
+            }
+            return response.json();
+        })
         .then(data => {
             const weatherInfo = document.getElementById('weather-info');
             const temperature = data.main.temp;
@@ -62,7 +67,11 @@
             `;
         })
         .catch(error => {
-            document.getElementById('weather-info').innerHTML = `<p>Error fetching weather data.</p>`;
+            // Handle errors
+            document.getElementById('weather-info').innerHTML = `
+                <p>Error fetching weather data. Please check your API key or try again later.</p>
+                <p>${error.message}</p>
+            `;
             console.error(error);
         });
 </script>
