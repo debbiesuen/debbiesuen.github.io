@@ -3,29 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Google Maps API</title>
+    <title>Food Sharing Map</title>
     <style>
         #map {
-            height: 400px;
+            height: 600px;
             width: 100%;
         }
+        .popup-content {
+            font-size: 16px;
+        }
     </style>
-</head>
-<body>
-
-    <h1>Test Google Maps API</h1>
-    <div id="map"></div>
-
+    <!-- Google Maps API Script (Make sure to replace YOUR_API_KEY with your actual API key) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
     <script>
+        // Function to initialize the map
         function initMap() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: -34.397, lng: 150.644},
-                zoom: 8
+            // Set the initial map center and zoom level
+            var map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 51.505, lng: -0.09 }, // Default location (London)
+                zoom: 13
+            });
+
+            // Sample food locations with latitude, longitude, and food type
+            var foodLocations = [
+                { lat: 51.5074, lng: -0.1278, food: "Pizza", description: "Delicious pepperoni pizza in London." },
+                { lat: 40.7128, lng: -74.0060, food: "Sushi", description: "Fresh sushi rolls in New York." },
+                { lat: 51.515, lng: -0.1, food: "Sushi", description: "Fresh sushi rolls." },
+                { lat: 51.525, lng: -0.11, food: "Burger", description: "Juicy beef burger." },
+                { lat: 51.535, lng: -0.12, food: "Pasta", description: "Delicious spaghetti." }
+            ];
+
+            // Add markers to the map
+            foodLocations.forEach(function(location) {
+                var marker = new google.maps.Marker({
+                    position: { lat: location.lat, lng: location.lng },
+                    map: map,
+                    title: location.food
+                });
+
+                // Create an info window for each marker
+                var infoWindow = new google.maps.InfoWindow({
+                    content: `
+                        <div class="popup-content">
+                            <strong>Food: </strong>${location.food} <br>
+                            <strong>Description: </strong>${location.description}
+                        </div>
+                    `
+                });
+
+                // Open the info window when the marker is clicked
+                marker.addListener("click", function() {
+                    infoWindow.open(map, marker);
+                });
             });
         }
     </script>
+</head>
+<body>
 
-    <!-- Replace YOUR_API_KEY with your actual Google Maps API key -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <h1>Food Sharing Map</h1>
+    <div id="map"></div>
+
 </body>
 </html>
