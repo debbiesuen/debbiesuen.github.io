@@ -5,53 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Sharing Map</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
         #map {
-            flex: 1;
             height: 600px;
             width: 100%;
-        }
-        .header, .footer {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-        .footer {
-            font-size: 14px;
-        }
-        .button-container {
-            text-align: center;
-            margin: 20px;
-        }
-        .home-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
         }
         .popup-content {
             font-size: 16px;
         }
     </style>
-    <!-- Google Maps API Script (Replace YOUR_API_KEY with your actual API key) -->
+    <!-- Google Maps API Script (Make sure to replace YOUR_API_KEY with your actual API key) -->
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
     <script>
         // Function to initialize the map
         function initMap() {
             // Set the initial map center and zoom level
             var map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: 51.505, lng: -0.09 },
+                center: { lat: 51.505, lng: -0.09 }, // Default location (London)
                 zoom: 13
             });
 
@@ -91,23 +60,8 @@
 </head>
 <body>
 
-    <!-- Header with Homepage Button -->
-    <header class="header">
-        <h1>Food Sharing Map</h1>
-    </header>
-
-    <!-- Button Container for Homepage Button -->
-    <div class="button-container">
-        <button class="home-button" onclick="window.location.href='index.html'">Go to Homepage</button>
-    </div>
-
-    <!-- Map Container -->
+    <h1>Food Sharing Map</h1>
     <div id="map"></div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 Food Sharing Map. All rights reserved.</p>
-    </footer>
 
 </body>
 </html>
