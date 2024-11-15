@@ -5,75 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Sharing Map</title>
     <style>
-        /* Style for the main container and map */
         body {
             font-family: Arial, sans-serif;
-            background: #f9f9f9;
-            color: #333;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
-
         #map {
+            flex: 1;
             height: 600px;
             width: 100%;
         }
-
-        /* Style for header and Home button */
-        header {
+        .header, .footer {
             background-color: #4CAF50;
+            color: white;
             padding: 10px;
             text-align: center;
-            color: white;
         }
-
+        .footer {
+            font-size: 14px;
+        }
         .button-container {
             text-align: center;
-            margin: 15px;
+            margin: 20px;
         }
-
-        .button-container button {
+        .home-button {
             padding: 10px 20px;
             font-size: 16px;
-            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
             border: none;
-            background-color: #4CAF50;
-            color: white;
             border-radius: 5px;
+            cursor: pointer;
         }
-
-        /* Style for footer */
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            margin-top: auto;
-        }
-
         .popup-content {
             font-size: 16px;
         }
     </style>
-
-    <!-- Google Maps API Script (Make sure to replace YOUR_API_KEY with your actual API key) -->
+    <!-- Google Maps API Script (Replace YOUR_API_KEY with your actual API key) -->
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
     <script>
         // Function to initialize the map
         function initMap() {
             // Set the initial map center and zoom level
             var map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: 51.505, lng: -0.09 }, // Default location (London)
+                center: { lat: 51.505, lng: -0.09 },
                 zoom: 13
             });
 
             // Sample food locations with latitude, longitude, and food type
             var foodLocations = [
-                { lat: 51.5074, lng: -0.1278, food: "Pizza", description: "Delicious pepperoni pizza in London." },
-                { lat: 40.7128, lng: -74.0060, food: "Sushi", description: "Fresh sushi rolls in New York." },
+                { lat: 51.505, lng: -0.09, food: "Pizza", description: "Hot pepperoni pizza!" },
                 { lat: 51.515, lng: -0.1, food: "Sushi", description: "Fresh sushi rolls." },
                 { lat: 51.525, lng: -0.11, food: "Burger", description: "Juicy beef burger." },
                 { lat: 51.535, lng: -0.12, food: "Pasta", description: "Delicious spaghetti." }
@@ -107,21 +91,22 @@
 </head>
 <body>
 
-    <!-- Header with Home button -->
-    <header>
+    <!-- Header with Homepage Button -->
+    <header class="header">
         <h1>Food Sharing Map</h1>
     </header>
 
+    <!-- Button Container for Homepage Button -->
     <div class="button-container">
-        <button onclick="window.location.href='index.html'">Home Page</button>
+        <button class="home-button" onclick="window.location.href='index.html'">Go to Homepage</button>
     </div>
 
-    <!-- Map container -->
+    <!-- Map Container -->
     <div id="map"></div>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Food Sharing Platform. All Rights Reserved.</p>
+    <footer class="footer">
+        <p>&copy; 2024 Food Sharing Map. All rights reserved.</p>
     </footer>
 
 </body>
