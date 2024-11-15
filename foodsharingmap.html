@@ -5,14 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Sharing Map</title>
     <style>
+        /* Style for the main container and map */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
         #map {
             height: 600px;
             width: 100%;
         }
+
+        /* Style for header and Home button */
+        header {
+            background-color: #4CAF50;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 15px;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+
+        /* Style for footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            margin-top: auto;
+        }
+
         .popup-content {
             font-size: 16px;
         }
     </style>
+
     <!-- Google Maps API Script (Make sure to replace YOUR_API_KEY with your actual API key) -->
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
     <script>
@@ -61,8 +107,22 @@
 </head>
 <body>
 
-    <h1>Food Sharing Map</h1>
+    <!-- Header with Home button -->
+    <header>
+        <h1>Food Sharing Map</h1>
+    </header>
+
+    <div class="button-container">
+        <button onclick="window.location.href='index.html'">Home Page</button>
+    </div>
+
+    <!-- Map container -->
     <div id="map"></div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Food Sharing Platform. All Rights Reserved.</p>
+    </footer>
 
 </body>
 </html>
