@@ -3,76 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial Video Page</title>
+    <title>Video Tutorials</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-color: #eff9ef; /* Light green background */
         }
         header {
             background-color: #ff0000;
             color: white;
             padding: 10px;
+            text-align: center;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
         header h1 {
             margin: 0;
             font-size: 24px;
         }
-        header nav {
-            display: flex;
-            gap: 10px;
-        }
         header nav a {
             color: white;
             text-decoration: none;
-            padding: 5px 10px;
+            padding: 10px 20px;
+            background-color: #cc0000;
             border-radius: 5px;
-            transition: background 0.3s;
+            transition: background-color 0.3s;
         }
         header nav a:hover {
-            background-color: #cc0000;
-        }
-        #search-bar {
-            display: flex;
-            margin: 20px;
-            justify-content: center;
-        }
-        #search-bar input[type="text"] {
-            width: 300px;
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 5px 0 0 5px;
-            border: 1px solid #ddd;
-        }
-        #search-bar button {
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 0 5px 5px 0;
-            border: 1px solid #ddd;
-            background-color: #ff0000;
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        #search-bar button:hover {
-            background-color: #cc0000;
+            background-color: #990000;
         }
         .video-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
             margin: 20px;
         }
         iframe {
-            width: 80%;
-            height: 450px;
+            width: 300px;
+            height: 200px;
             border: none;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .pagination button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .pagination button:hover {
+            background-color: #cc0000;
         }
     </style>
 </head>
@@ -80,22 +73,26 @@
 
     <!-- Header with Home Button and Title -->
     <header>
-        <h1>Video Tutorial</h1>
+        <h1>Video Tutorial Hub</h1>
         <nav>
-            <a href="#">Home</a>
+            <a href="debbiesuen.github.io/hortivision.html">Home</a>
         </nav>
     </header>
 
-    <!-- Search Bar -->
-    <div id="search-bar">
-        <input type="text" placeholder="Search...">
-        <button>Search</button>
+    <!-- Video Tutorials Section -->
+    <div class="video-container">
+        <!-- Embedded Videos (Add your actual video IDs) -->
+        <iframe src="https://www.youtube.com/embed/your-video-id1" title="Tutorial Video 1" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/your-video-id2" title="Tutorial Video 2" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/your-video-id3" title="Tutorial Video 3" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/your-video-id4" title="Tutorial Video 4" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/your-video-id5" title="Tutorial Video 5" allowfullscreen></iframe>
     </div>
 
-    <!-- Video Tutorial Section -->
-    <div class="video-container">
-        <!-- Embedded Video -->
-        <iframe src="https://www.youtube.com/embed/your-video-id" title="Tutorial Video" allowfullscreen></iframe>
+    <!-- Pagination Section -->
+    <div class="pagination">
+        <button>Previous</button>
+        <button>Next</button>
     </div>
 
 </body>
