@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Farming Tutor</title>
+    <style>
+        body {
+            font-family: 'Apple Chancery', serif;
+            background-color: #eff9ef; /* Light green background */
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #228B22;
+            color: white;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        .search-bar {
+            margin: 20px auto;
+            text-align: center;
+        }
+        .search-bar input {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .search-bar button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #228B22;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        .search-bar button:hover {
+            background-color: #1b6e17;
+        }
+        .tutors-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        .tutor-card {
+            width: 250px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            text-align: center;
+        }
+        .tutor-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .tutor-card h2 {
+            font-size: 20px;
+            margin: 10px 0 5px;
+        }
+        .tutor-card p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .tutor-card button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #228B22;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .tutor-card button:hover {
+            background-color: #1b6e17;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Choose Your Farming Tutor</h1>
+    </header>
+
+    <!-- Search Bar Section -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search tutors by name or expertise...">
+        <button>Search</button>
+    </div>
+
+    <!-- Tutors Section -->
+    <div class="tutors-container">
+        <!-- Tutor Card 1 -->
+        <div class="tutor-card">
+            <img src="https://via.placeholder.com/250x150" alt="Tutor Photo">
+            <h2>John Doe</h2>
+            <p>Expert in organic farming</p>
+            <p>Rating: ⭐⭐⭐⭐⭐</p>
+            <button>View Profile</button>
+        </div>
+        <!-- Tutor Card 2 -->
+        <div class="tutor-card">
+            <img src="https://via.placeholder.com/250x150" alt="Tutor Photo">
+            <h2>Jane Smith</h2>
+            <p>Specialist in irrigation techniques</p>
+            <p>Rating: ⭐⭐⭐⭐☆</p>
+            <button>View Profile</button>
+        </div>
+        <!-- Tutor Card 3 -->
+        <div class="tutor-card">
+            <img src="https://via.placeholder.com/250x150" alt="Tutor Photo">
+            <h2>Emily Johnson</h2>
+            <p>Crop rotation methods</p>
+            <p>Rating
