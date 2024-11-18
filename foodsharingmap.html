@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Apple Chancery', serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -20,26 +20,34 @@
             width: 100%;
         }
         .header, .footer {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #eff9ef;
+            color: #333；
             padding: 10px;
             text-align: center;
         }
         .footer {
             font-size: 14px;
+            background: #eff9ef;
+            color: black;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
         }
         .button-container {
             text-align: center;
             margin: 20px;
         }
         .home-button {
-            padding: 10px 20px;
-            font-size: 16px;
+           position: absolute;
+            top: 20px;
+            right: 20px;
             background-color: #4CAF50;
             color: white;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -52,7 +60,7 @@
 
     <!-- Button Container for Homepage Button -->
     <div class="button-container">
-        <button class="home-button" onclick="window.location.href='index.html'">Go to Homepage</button>
+        <button class="home-button" onclick="window.location.href='hortivision.html'">Home</button>
     </div>
 
     <!-- Map Container -->
