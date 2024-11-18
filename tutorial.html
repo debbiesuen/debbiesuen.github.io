@@ -6,35 +6,20 @@
     <title>Video Tutorials</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Apple Chancery', serif;
+            background-color: #eff9ef;
+            color: black;
             margin: 0;
             padding: 0;
-            background-color: #eff9ef; /* Light green background */
+            text-align: center;
         }
         header {
-            background-color: #ff0000;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background-color:  #eff9ef;
+            color: black;
+            padding: 1rem;
+            position: relative;
         }
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        header nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            background-color: #cc0000;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        header nav a:hover {
-            background-color: #990000;
-        }
+
         .video-container {
             display: flex;
             justify-content: space-around;
@@ -49,6 +34,23 @@
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
+
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        
+        .home-button:hover {
+            background-color: #45a049;
+        }
         .pagination {
             text-align: center;
             margin-top: 20px;
@@ -57,7 +59,7 @@
             padding: 10px 20px;
             margin: 5px;
             font-size: 16px;
-            background-color: #ff0000;
+            background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 5px;
@@ -65,7 +67,13 @@
             transition: background-color 0.3s;
         }
         .pagination button:hover {
-            background-color: #cc0000;
+            background-color:  #45a049;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #eff9ef;
+            color: black;
         }
     </style>
 </head>
@@ -87,6 +95,9 @@
         <iframe src="https://www.youtube.com/embed/your-video-id3" title="Tutorial Video 3" allowfullscreen></iframe>
         <iframe src="https://www.youtube.com/embed/your-video-id4" title="Tutorial Video 4" allowfullscreen></iframe>
         <iframe src="https://www.youtube.com/embed/your-video-id5" title="Tutorial Video 5" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/your-video-id5" title="Tutorial Video 6" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/your-video-id5" title="Tutorial Video 7" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/your-video-id5" title="Tutorial Video 8" allowfullscreen></iframe>
     </div>
 
     <!-- Pagination Section -->
@@ -94,6 +105,8 @@
         <button>Previous</button>
         <button>Next</button>
     </div>
-
+ <footer>
+        <p>&copy; 2024 Hortivision. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
