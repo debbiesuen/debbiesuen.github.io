@@ -12,11 +12,14 @@
             padding: 0;
         }
         header {
-            position: relative;
-            text-align: center;
-            padding: 20px;
-            background-color: #eff9ef;
-            gap: 10px; 
+               background-color: #eff9ef;
+                color: black;
+                padding: 1rem;
+                position: relative;
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px; /* Space between the buttons */
+                align-items: center;
         }
         header h1 {
             margin: 0;
@@ -24,22 +27,21 @@
             color: #000;
         }
         .home-button,
-        .back-button{
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            text-decoration: none;
-        }
+        .back-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
         .home-button:hover,
         .back-button:hover {
-            background-color: #45a049;
-        }
+    background-color: #45a049;
+}
         .search-bar {
             margin: 20px auto;
             text-align: center;
