@@ -14,12 +14,11 @@
             text-align: center;
         }
         header {
-            background-color:  #eff9ef;
+            background-color: #eff9ef;
             color: black;
             padding: 1rem;
             position: relative;
         }
-
         .video-container {
             display: flex;
             justify-content: space-around;
@@ -34,7 +33,6 @@
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
-
         .home-button {
             position: absolute;
             top: 20px;
@@ -47,8 +45,33 @@
             font-size: 16px;
             text-decoration: none;
         }
-        
         .home-button:hover {
+            background-color: #45a049;
+        }
+        .search-bar {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .search-bar input {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .search-bar button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
             background-color: #45a049;
         }
         .pagination {
@@ -67,7 +90,7 @@
             transition: background-color 0.3s;
         }
         .pagination button:hover {
-            background-color:  #45a049;
+            background-color: #45a049;
         }
         footer {
             text-align: center;
@@ -85,6 +108,12 @@
         <a href="hortivision.html" class="home-button">Home</a>
     </header>
 
+    <!-- Search Bar Section -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search tutorials..." />
+        <button>Search</button>
+    </div>
+
     <!-- Video Tutorials Section -->
     <div class="video-container">
         <!-- Embedded Videos (Add your actual video IDs) -->
@@ -93,9 +122,9 @@
         <iframe src="https://www.youtube.com/embed/your-video-id3" title="Tutorial Video 3" allowfullscreen></iframe>
         <iframe src="https://www.youtube.com/embed/your-video-id4" title="Tutorial Video 4" allowfullscreen></iframe>
         <iframe src="https://www.youtube.com/embed/your-video-id5" title="Tutorial Video 5" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/your-video-id5" title="Tutorial Video 6" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/your-video-id5" title="Tutorial Video 7" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/your-video-id5" title="Tutorial Video 8" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/your-video-id6" title="Tutorial Video 6" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/your-video-id7" title="Tutorial Video 7" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/your-video-id8" title="Tutorial Video 8" allowfullscreen></iframe>
     </div>
 
     <!-- Pagination Section -->
@@ -103,7 +132,9 @@
         <button>Previous</button>
         <button>Next</button>
     </div>
- <footer>
+
+    <!-- Footer Section -->
+    <footer>
         <p>&copy; 2024 Hortivision. All Rights Reserved.</p>
     </footer>
 </body>
