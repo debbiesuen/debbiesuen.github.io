@@ -12,14 +12,30 @@
             padding: 0;
         }
         header {
+            position: relative;
             text-align: center;
             padding: 20px;
-            background-color: #228B22;
-            color: white;
+            background-color: #eff9ef;
         }
         header h1 {
             margin: 0;
             font-size: 36px;
+            color: #000;
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        .home-button:hover {
+            background-color: #45a049;
         }
         .search-bar {
             margin: 20px auto;
@@ -35,7 +51,7 @@
         .search-bar button {
             padding: 10px 15px;
             font-size: 16px;
-            background-color: #228B22;
+            background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 5px;
@@ -43,7 +59,7 @@
             margin-left: 5px;
         }
         .search-bar button:hover {
-            background-color: #1b6e17;
+            background-color: #45a049;
         }
         .tutors-container {
             display: flex;
@@ -76,14 +92,40 @@
         .tutor-card button {
             padding: 10px;
             font-size: 16px;
-            background-color: #228B22;
+            background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin: 5px;
         }
         .tutor-card button:hover {
-            background-color: #1b6e17;
+            background-color: #45a049;
+        }
+        .pagination {
+            text-align: center;
+            margin: 20px;
+        }
+        .pagination button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        .pagination button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #eff9ef;
+            color: #555;
+            font-size: 14px;
+            border-top: 1px solid #ddd;
         }
     </style>
 </head>
@@ -92,6 +134,7 @@
     <!-- Header Section -->
     <header>
         <h1>Choose Your Farming Tutor</h1>
+        <a href="hortivision.html" class="home-button">Home</a>
     </header>
 
     <!-- Search Bar Section -->
@@ -102,25 +145,30 @@
 
     <!-- Tutors Section -->
     <div class="tutors-container">
-        <!-- Tutor Card 1 -->
+        <!-- Eight Tutor Profiles -->
         <div class="tutor-card">
             <img src="https://via.placeholder.com/250x150" alt="Tutor Photo">
             <h2>John Doe</h2>
-            <p>Expert in organic farming</p>
+            <p>Expert in Organic Farming</p>
+            <p>Price: $50/hour</p>
             <p>Rating: ⭐⭐⭐⭐⭐</p>
             <button>View Profile</button>
+            <button>Book Now</button>
         </div>
-        <!-- Tutor Card 2 -->
-        <div class="tutor-card">
-            <img src="https://via.placeholder.com/250x150" alt="Tutor Photo">
-            <h2>Jane Smith</h2>
-            <p>Specialist in irrigation techniques</p>
-            <p>Rating: ⭐⭐⭐⭐☆</p>
-            <button>View Profile</button>
-        </div>
-        <!-- Tutor Card 3 -->
-        <div class="tutor-card">
-            <img src="https://via.placeholder.com/250x150" alt="Tutor Photo">
-            <h2>Emily Johnson</h2>
-            <p>Crop rotation methods</p>
-            <p>Rating
+        <!-- More tutor profiles (similar to the above) -->
+        <!-- Repeat for a total of 8 tutors -->
+    </div>
+
+    <!-- Pagination Section -->
+    <div class="pagination">
+        <button>&laquo; Previous</button>
+        <button>Next &raquo;</button>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 HORTIVISION. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
