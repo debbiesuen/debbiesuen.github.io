@@ -3,92 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulated Taiwan Weather Map</title>
+    <title>Simulated Taoyuan Farmer Weather Forecast</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
         body {
             margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
         }
         #map {
-            height: 100vh;
+            height: 70vh;
         }
-        .temperature-label {
-            background: rgba(255, 69, 0, 0.8);
-            color: white;
-            padding: 4px;
-            border-radius: 4px;
-            font-size: 12px;
+        .forecast-container {
+            padding: 20px;
+            background: #f4f4f9;
         }
-        .cloud {
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            width: 60px;
-            height: 40px;
-            animation: moveCloud 12s linear infinite;
-            position: absolute;
+        .forecast-details {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fff;
         }
-        @keyframes moveCloud {
-            from {
-                transform: translateX(-150px);
-            }
-            to {
-                transform: translateX(600px);
-            }
+        .actions-container {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #e8f5e9;
+        }
+        .important {
+            color: #d32f2f;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
+    <!-- Real-Time Weather Map -->
     <div id="map"></div>
 
+    <!-- Forecast and Actions Section -->
+    <div class="forecast-container">
+        <div class="forecast-details">
+            <h2>Taoyuan Weather Forecast</h2>
+            <p><strong>Temperature:</strong> 26°C</p>
+            <p><strong>Humidity:</strong> 85%</p>
+            <p><strong>Rainfall Probability:</strong> 90%</p>
+            <p><strong>Wind Speed:</strong> 15 km/h</p>
+            <p class="important">It is likely to rain today. Prepare accordingly!</p>
+        </div>
+
+        <div class="actions-container">
+            <h3>Farmer's Guide for Rain Preparation</h3>
+            <ul>
+                <li><strong>Crop Protection:</strong> Cover sensitive crops with waterproof sheets or install temporary tunnels.</li>
+                <li><strong>Drainage:</strong> Ensure that drainage systems are clear of debris to prevent waterlogging.</li>
+                <li><strong>Harvesting:</strong> If heavy rain is expected, consider harvesting mature crops beforehand.</li>
+                <li><strong>Fertilizers:</strong> Avoid applying fertilizers right before the rain to prevent runoff.</li>
+                <li><strong>Livestock:</strong> Move animals to higher ground or shelters to keep them dry.</li>
+                <li><strong>Storage:</strong> Cover stored produce or equipment to avoid water damage.</li>
+            </ul>
+        </div>
+    </div>
+
     <script>
-        // Initialize Leaflet map
-        const map = L.map('map').setView([23.6978, 120.9605], 7); // Center on Taiwan
+        // Initialize Leaflet map centered on Taoyuan
+        const map = L.map('map').setView([25.0124, 121.2021], 11); // Center Taoyuan
 
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
 
-        // Fake weather data
-        const weatherData = [
-            { lat: 25.033, lon: 121.5654, temp: "28°C", desc: "Sunny", city: "Taipei" },
-            { lat: 22.6273, lon: 120.3014, temp: "30°C", desc: "Cloudy", city: "Kaohsiung" },
-            { lat: 24.1477, lon: 120.6736, temp: "27°C", desc: "Rainy", city: "Taichung" },
-            { lat: 23.4801, lon: 120.4491, temp: "26°C", desc: "Partly Cloudy", city: "Chiayi" }
-        ];
-
-        // Add weather markers to the map
-        weatherData.forEach(data => {
-            // Add city marker
-            const marker = L.marker([data.lat, data.lon]).addTo(map);
-            marker.bindPopup(`<strong>${data.city}</strong><br>Temperature: ${data.temp}<br>${data.desc}`);
-
-            // Add temperature label
-            const tempDiv = L.divIcon({
-                className: "temperature-label",
-                html: `${data.temp}`,
-                iconSize: [50, 20],
-            });
-            L.marker([data.lat, data.lon], { icon: tempDiv }).addTo(map);
-        });
-
-        // Add moving cloud animation
-        const cloudElement = document.createElement('div');
-        cloudElement.className = 'cloud';
-        document.body.appendChild(cloudElement);
-
-        // Animate cloud across the screen
-        let cloudPosition = { x: -150, y: 100 };
-        const moveCloud = () => {
-            cloudPosition.x += 1;
-            if (cloudPosition.x > window.innerWidth) cloudPosition.x = -150;
-            cloudElement.style.transform = `translate(${cloudPosition.x}px, ${cloudPosition.y}px)`;
-            requestAnimationFrame(moveCloud);
-        };
-        moveCloud();
+        // Add a weather marker for Taoyuan
+        const marker = L.marker([25.0124, 121.2021]).addTo(map);
+        marker.bindPopup(`
+            <strong>Taoyuan Weather:</strong><br>
+            <strong>Temp:</strong> 26°C<br>
+            <strong>Humidity:</strong> 85%<br>
+            <strong>Rainfall:</strong> 90%<br>
+            <strong>Wind:</strong> 15 km/h<br>
+            <strong>Condition:</strong> Likely Rain
+        `);
     </script>
 </body>
 </html>
