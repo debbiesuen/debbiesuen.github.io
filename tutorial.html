@@ -13,12 +13,28 @@
             padding: 0;
             text-align: center;
         }
-        header {
-            background-color: #eff9ef;
-            color: black;
-            padding: 1rem;
-            position: relative;
-        }
+       header {
+    background-color: #eff9ef;
+    color: black;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between; /* Spread out header elements */
+    align-items: center; /* Align elements vertically in the center */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+    color: #000;
+    flex-grow: 1; /* Allows the title to take up remaining space */
+    text-align: center; /* Centers the title text within its space */
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px; /* Space between the buttons */
+}
+
         .video-container {
             display: flex;
             justify-content: space-around;
@@ -46,7 +62,7 @@
             color: #555;
         }
         .home-button,
-        .expert-buttom {
+        .expert-button {
             position: absolute;
             top: 20px;
             right: 20px;
@@ -59,7 +75,7 @@
             text-decoration: none;
         }
         .home-button:hover,
-        .expert-buttom:hover {
+        .expert-button:hover {
             background-color: #45a049;
         }
         .search-bar {
@@ -120,9 +136,11 @@
 
     <!-- Header with Home Button and Title -->
     <header>
-        <h1>Tutorial Hub</h1>
+        <h1>Video Tutorial Hub</h1>
+         <div class="header-buttons">
         <a href="hortivision.html" class="home-button">Home</a>
         <a href="tutor.html" class="expert-button">Meet the Expert</a>
+         </div>
     </header>
 
     <!-- Search Bar Section -->
