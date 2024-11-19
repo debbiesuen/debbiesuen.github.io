@@ -11,21 +11,28 @@
             margin: 0;
             padding: 0;
         }
-        header {
-               background-color: #eff9ef;
-                color: black;
-                padding: 1rem;
-                position: relative;
-                display: flex;
-                justify-content: flex-end;
-                gap: 10px; /* Space between the buttons */
-                align-items: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 36px;
-            color: #000;
-        }
+      header {
+    background-color: #eff9ef;
+    color: black;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between; /* Spread out header elements */
+    align-items: center; /* Align elements vertically in the center */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+    color: #000;
+    flex-grow: 1; /* Allows the title to take up remaining space */
+    text-align: center; /* Centers the title text within its space */
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px; /* Space between the buttons */
+}
+
         .home-button,
         .back-button {
     background-color: #4CAF50;
@@ -141,10 +148,13 @@
 
     <!-- Header Section -->
     <header>
-        <h1>Choose Your Farming Tutor</h1>
+    <h1>Choose Your Farming Tutor</h1>
+    <div class="header-buttons">
         <a href="hortivision.html" class="home-button">Home</a>
         <a href="tutorial.html" class="back-button">back to Tutorial Videos</a>
-    </header>
+    </div>
+</header>
+
 
     <!-- Search Bar Section -->
     <div class="search-bar">
