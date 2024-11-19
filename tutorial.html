@@ -30,19 +30,15 @@
                 color: #000;
             }
             
-            .header-buttons {
-                position: absolute; /* Allow buttons to be positioned independently */
-                right: 10px; /* Align buttons to the right edge */
-                top: 50%; /* Vertically center the buttons */
-                transform: translateY(-50%); /* Adjust for vertical alignment */
-                display: flex;
-                gap: 10px; /* Space between the buttons */
-            }
-                    .home-button,
-            .expert-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+           .header-buttons {
+            position: absolute; /* Allows independent positioning */
+            right: 10px; /* Align buttons to the top-right corner */
+            top: 10px; /* Ensure the buttons are positioned at the top */
+            display: flex;
+            gap: 10px; /* Add space between the buttons */
+        }
+
+        .header-buttons a {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
@@ -50,9 +46,10 @@
             border-radius: 5px;
             font-size: 16px;
             text-decoration: none;
+            display: inline-block;
         }
-        .home-button:hover,
-        .expert-button:hover {
+
+        .header-buttons a:hover {
             background-color: #45a049;
         }
 
@@ -140,12 +137,12 @@
 <body>
 
     <!-- Header with Home Button and Title -->
-    <header>
+     <header>
         <h1>Video Tutorial Hub</h1>
-         <div class="header-buttons">
-        <a href="hortivision.html" class="home-button">Home</a>
-        <a href="tutor.html" class="expert-button">Meet the Expert</a>
-         </div>
+        <div class="header-buttons">
+            <a href="hortivision.html">Home</a>
+            <a href="tutor.html" >Meet the Expert</a>
+        </div>
     </header>
 
     <!-- Search Bar Section -->
