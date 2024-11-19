@@ -3,96 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulated Taiwan Weather Forecast</title>
+    <title>Simulated Taiwan Weather Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #e0f7fa;
         }
-        .map-container {
-            position: relative;
-            width: 500px;
-            height: 600px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/d/d1/Taiwan_location_map_plain.svg') no-repeat center;
-            background-size: contain;
-            border: 2px solid #000;
-            overflow: hidden;
+        #map {
+            height: 100vh;
+        }
+        .temperature-label {
+            background: rgba(255, 69, 0, 0.8);
+            color: white;
+            padding: 4px;
+            border-radius: 4px;
+            font-size: 12px;
         }
         .cloud {
-            position: absolute;
             background: rgba(255, 255, 255, 0.7);
             border-radius: 50%;
-            width: 80px;
-            height: 50px;
-            animation: moveCloud 10s linear infinite;
-        }
-        .rain {
+            width: 60px;
+            height: 40px;
+            animation: moveCloud 12s linear infinite;
             position: absolute;
-            color: blue;
-            font-size: 10px;
-            animation: fallRain 1s linear infinite;
-        }
-        .temperature {
-            position: absolute;
-            background: rgba(255, 69, 0, 0.7);
-            color: white;
-            padding: 5px;
-            border-radius: 8px;
         }
         @keyframes moveCloud {
             from {
-                transform: translateX(-100%);
+                transform: translateX(-150px);
             }
             to {
                 transform: translateX(600px);
             }
         }
-        @keyframes fallRain {
-            from {
-                transform: translateY(-10px);
-                opacity: 1;
-            }
-            to {
-                transform: translateY(100px);
-                opacity: 0;
-            }
-        }
     </style>
-</head> 
+</head>
 <body>
-    <div class="map-container">
-        <!-- Simulated clouds -->
-        <div class="cloud" style="top: 50px; left: 100px;"></div>
-        <div class="cloud" style="top: 150px; left: 200px;"></div>
-        
-        <!-- Simulated rain -->
-        <div class="rain" style="top: 300px; left: 150px;">|||</div>
-        <div class="rain" style="top: 350px; left: 200px;">|||</div>
-        
-        <!-- Simulated temperatures -->
-        <div class="temperature" style="top: 100px; left: 50px;">28°C</div>
-        <div class="temperature" style="top: 400px; left: 250px;">30°C</div>
-    </div>
+    <div id="map"></div>
 
     <script>
-        // Additional JavaScript for dynamic movement
-        function animateRain() {
-            const rains = document.querySelectorAll('.rain');
-            rains.forEach(rain => {
-                const startY = parseInt(rain.style.top);
-                let newY = startY + Math.random() * 10;
-                if (newY > 600) newY = startY;
-                rain.style.top = `${newY}px`;
-            });
-        }
+        // Initialize Leaflet map
+        const map = L.map('map').setView([23.6978, 120.9605], 7); // Center on Taiwan
 
-        setInterval(animateRain, 100);
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Fake weather data
+        const weatherData = [
+            { lat: 25.033, lon: 121.5654, temp: "28°C", desc: "Sunny", city: "Taipei" },
+            { lat: 22.6273, lon: 120.3014, temp: "30°C", desc: "Cloudy", city: "Kaohsiung" },
+            { lat: 24.1477, lon: 120.6736, temp: "27°C", desc: "Rainy", city: "Taichung" },
+            { lat: 23.4801, lon: 120.4491, temp: "26°C", desc: "Partly Cloudy", city: "Chiayi" }
+        ];
+
+        // Add weather markers to the map
+        weatherData.forEach(data => {
+            // Add city marker
+            const marker = L.marker([data.lat, data.lon]).addTo(map);
+            marker.bindPopup(`<strong>${data.city}</strong><br>Temperature: ${data.temp}<br>${data.desc}`);
+
+            // Add temperature label
+            const tempDiv = L.divIcon({
+                className: "temperature-label",
+                html: `${data.temp}`,
+                iconSize: [50, 20],
+            });
+            L.marker([data.lat, data.lon], { icon: tempDiv }).addTo(map);
+        });
+
+        // Add moving cloud animation
+        const cloudElement = document.createElement('div');
+        cloudElement.className = 'cloud';
+        document.body.appendChild(cloudElement);
+
+        // Animate cloud across the screen
+        let cloudPosition = { x: -150, y: 100 };
+        const moveCloud = () => {
+            cloudPosition.x += 1;
+            if (cloudPosition.x > window.innerWidth) cloudPosition.x = -150;
+            cloudElement.style.transform = `translate(${cloudPosition.x}px, ${cloudPosition.y}px)`;
+            requestAnimationFrame(moveCloud);
+        };
+        moveCloud();
     </script>
 </body>
 </html>
