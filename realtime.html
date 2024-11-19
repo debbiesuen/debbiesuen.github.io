@@ -88,11 +88,11 @@
 <body>
     <!-- Home Button -->
     <div class="button-container">
-        <button class="home-button" a href="hortivision.html">Home</button>
+        <button class="home-button" onclick="window.location.href='/'">Home</button>
     </div>
 
     <!-- Header -->
-    <h1>Real-Time Data</h1>
+    <h1>Real-Time Weather Forecast</h1>
 
     <!-- Real-Time Weather Map -->
     <div id="map"></div>
@@ -130,10 +130,10 @@
         // Initialize Leaflet map centered on Taiwan
         const map = L.map('map').setView([23.6978, 120.9605], 7); // Center Taiwan
 
-        // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: '&copy; OpenStreetMap contributors'
+        // Add Mapbox satellite imagery tiles (replace 'your-access-token' with your actual Mapbox token)
+        L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=your-access-token', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery &copy; <a href="https://www.mapbox.com">Mapbox</a>',
+            maxZoom: 18
         }).addTo(map);
 
         // Fake weather data for multiple cities in Taiwan
@@ -157,4 +157,3 @@
     </script>
 </body>
 </html>
-
