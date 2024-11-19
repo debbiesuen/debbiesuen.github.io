@@ -12,28 +12,33 @@
             margin: 0;
             padding: 0;
             text-align: center;
-        }
-       header {
-    background-color: #eff9ef;
-    color: black;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between; /* Spread out header elements */
-    align-items: center; /* Align elements vertically in the center */
-}
+          }
+        
+            header {
+                background-color: #eff9ef;
+                color: black;
+                padding: 1rem;
+                display: flex;
+                justify-content: center; /* Center the header content horizontally */
+                align-items: center; /* Align content vertically in the center */
+                position: relative; /* Required for absolute positioning of buttons */
+            }
+            
+            header h1 {
+                margin: 0;
+                font-size: 36px;
+                color: #000;
+            }
+            
+            .header-buttons {
+                position: absolute; /* Allow buttons to be positioned independently */
+                right: 10px; /* Align buttons to the right edge */
+                top: 50%; /* Vertically center the buttons */
+                transform: translateY(-50%); /* Adjust for vertical alignment */
+                display: flex;
+                gap: 10px; /* Space between the buttons */
+            }
 
-header h1 {
-    margin: 0;
-    font-size: 36px;
-    color: #000;
-    flex-grow: 1; /* Allows the title to take up remaining space */
-    text-align: center; /* Centers the title text within its space */
-}
-
-.header-buttons {
-    display: flex;
-    gap: 10px; /* Space between the buttons */
-}
 
         .video-container {
             display: flex;
