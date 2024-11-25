@@ -5,37 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HORTIVISION</title>
     <style>
-        /* Reset margin and padding for all elements */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Styling for the website body */
         body {
-            font-family: 'Apple Chancery', serif; /* Font for the website */
-            background: #eff9ef; /* Background color */
-            color: #333; /* Text color */
-            line-height: 1.6; /* Line spacing */
+            font-family: 'Apple Chancery', serif;
+            background: #eff9ef;
+            color: #333;
+            line-height: 1.6;
         }
 
-        /* Styling for the header section */
         header {
-            background-image: url('background 4.jpg'); /* Background image */
-            background-size: cover; /* Make background image cover the section */
-            background-position: center; /* Center the background image */
-            color: white; /* Text color */
-            text-align: center; /* Center align text */
-            height: 100vh; /* Full height of the viewport */
-            display: flex; /* Flexbox for alignment */
-            flex-direction: column; /* Arrange items in a column */
-            justify-content: flex-start; /* Align items at the top */
-            padding-top: 100px; /* Space at the top */
-            position: relative; /* Position for pseudo-element (::before) */
+            background-image: url('background 4.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 100px;
         }
 
-        /* Add a dark overlay to the header background */
         header::before {
             content: '';
             position: absolute;
@@ -43,207 +41,359 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
-            z-index: 1; /* Place below header content */
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
         }
 
-        /* Styling for header title and paragraph */
         header h1, header p {
-            position: relative; /* Ensure it is above the overlay */
-            z-index: 2; /* Higher layer than the overlay */
+            position: relative;
+            z-index: 2;
         }
 
-        /* Title in the header section */
         header h1 {
-            font-size: 4rem; /* Font size for the title */
-            margin-bottom: 5px; /* Space below the title */
-            opacity: 0; /* Start invisible */
-            animation: fadeIn 2s forwards 0.5s; /* Fade-in animation */
-            color: white; /* Text color */
-            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5); /* Add shadow to text */
+            font-size: 4rem;
+            margin-bottom: 5px;
+            opacity: 0;
+            animation: fadeIn 2s forwards 0.5s;
+            color: white;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+            font-family: 'Apple Chancery', serif;
         }
 
-        /* Subtitle in the header section */
         header p {
-            font-size: 1.5rem; /* Font size for the subtitle */
-            margin-top: 1px; /* Space above the subtitle */
-            opacity: 0; /* Start invisible */
-            animation: fadeIn 2s forwards 0.5s; /* Fade-in animation */
-            color: white; /* Text color */
-            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6); /* Add shadow to text */
+            font-size: 1.5rem;
+            margin-top: 1px;
+            opacity: 0;
+            animation: fadeIn 2s forwards 0.5s;
+            color: white;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
+            font-family: 'Apple Chancery', serif;
         }
 
-        /* Keyframes for fade-in animation */
         @keyframes fadeIn {
             from {
-                opacity: 0; /* Start invisible */
-                transform: translateY(20px); /* Move from below */
+                opacity: 0;
+                transform: translateY(20px);
             }
             to {
-                opacity: 1; /* Fully visible */
-                transform: translateY(0); /* Final position */
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        /* Container for the circles in About Us section */
-        .circle-container {
-            position: relative; /* Position for alignment */
-            height: 400px; /* Height of the container */
-            margin-top: 3rem; /* Space above */
-            top: 60px; /* Adjust position from the top */
+.circle-container {
+    position: relative;
+    height: 400px; /* Increased height to accommodate larger circles */
+    margin-top: 3rem;
+    top: 60px;
+}
+
+/* Base circle style */
+.circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rgba(67, 160, 71, 0.7); /* Translucent green */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: white;
+    position: absolute;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards; /* Keeps the animation state after it finishes */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 3D shadow effect */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Text shadow for better visibility */
+    transform-style: preserve-3d; /* Enables 3D transforms */
+    transition: font-size 0.5s ease; /* Ensures smooth font resizing */
+}
+
+/* Left circle animation - scales to 10x size */
+.left-circle {
+    left: 200px; /* Start position off-screen */
+    animation-name: moveLeft;
+    background: rgb(216, 224, 199, 0.7); /* Translucent blue */
+}
+
+     
+/* Animation for left circle (moves in, then scales to 10x) */
+@keyframes moveLeft {
+    0% { left: 100px; }
+    50% { left: calc(50% - 500px); transform: scale(2); top: 80px; font-size: 0.8rem  } /* Move to position */
+    100% { left: calc(50% - 390px); transform: scale(1.5); top: 20px; font-size: 1.5rem; } /* Scale to 10x */
+}
+
+
+
+
+
+  .moving-text-container {
+            width: 100%; /* Full width of the page */
+            height: 300px; /* Adjust height as needed */
+            position: relative; /* Relative positioning for the container */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Hide overflow if needed */
         }
 
-        /* General styling for the circles */
-        .circle {
-            width: 150px; /* Circle width */
-            height: 150px; /* Circle height */
-            border-radius: 50%; /* Make it a circle */
-            background-color: rgba(67, 160, 71, 0.7); /* Background color */
-            display: flex; /* Flexbox for alignment */
-            justify-content: center; /* Center align text horizontally */
-            align-items: center; /* Center align text vertically */
-            font-size: 1.2rem; /* Font size for text inside */
-            color: white; /* Text color */
-            position: absolute; /* Position within the container */
-            animation-duration: 2s; /* Duration of the animation */
-            animation-timing-function: ease-in-out; /* Smooth animation */
-            animation-fill-mode: forwards; /* Keep final animation state */
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Add shadow */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Shadow for text */
-        }
-
-        /* Left circle animation and styling */
-        .left-circle {
-            left: 200px; /* Position from the left */
-            animation-name: moveLeft; /* Animation for movement */
-            background: rgba(216, 224, 199, 0.7); /* Background color */
-        }
-
-        /* Animation to move the left circle */
-        @keyframes moveLeft {
-            0% { left: 100px; }
-            50% { left: calc(50% - 500px); transform: scale(2); top: 80px; font-size: 0.8rem; }
-            100% { left: calc(50% - 390px); transform: scale(1.5); top: 20px; font-size: 1.5rem; }
-        }
-
-        /* Moving text container */
-        .moving-text-container {
-            width: 100%; /* Full width */
-            height: 300px; /* Container height */
-            position: relative; /* Position for alignment */
-            display: flex; /* Flexbox for alignment */
-            justify-content: center; /* Center text horizontally */
-            align-items: center; /* Center text vertically */
-            overflow: hidden; /* Hide overflow */
-        }
-
-        /* Moving text element */
+        /* Paragraph that will move from right to center */
         .moving-text {
-            position: absolute; /* Position for movement */
+            position: absolute;
             white-space: normal; /* Allow text wrapping */
-            max-width: 50%; /* Limit width */
-            right: -100%; /* Start off-screen */
-            animation: moveToCenter 3s forwards; /* Animation to move text */
-            font-size: 1.2rem; /* Font size */
+            max-width: 50%; /* Limit the width of the paragraph */
+            right: -100%; /* Start off-screen (on the right) */
+            animation: moveToCenter 3s forwards; /* Apply animation and stop at the end */
+            font-size: 1.2rem; /* Adjust font size */
             color: #333; /* Text color */
-            text-align: justify; /* Justify text alignment */
+            text-align: justify; /* Justify paragraph alignment */
         }
 
-        /* Keyframes for moving text animation */
+        /* Keyframes for moving text */
         @keyframes moveToCenter {
-            0% { right: -100%; } /* Start off-screen */
-            80% { right: 17%; } /* Move close to the center */
-            100% { right: 20%; } /* Final position */
+            0% {
+                right: -100%; /* Start off-screen on the right */
+            }
+            80% {
+                right: 17%; /* Moving to slightly right of the center */
+            }
+            100% {
+                right: 20%; /* Final resting position slightly right of center */
+            }
         }
 
-        /* Grid layout for the clickable blocks */
+
+        
+
+
+
         .block-container {
-            display: grid; /* Grid layout */
-            grid-template-columns: repeat(3, 390px); /* Three columns */
-            gap: 2rem; /* Space between blocks */
-            justify-content: center; /* Center the blocks */
+            display: grid;
+            grid-template-columns: repeat(3, 390px);
+            gap: 2rem;
+            justify-content: center;
         }
 
-        /* Individual block styling */
         .block {
-            background-color: #eff9ef; /* Block background color */
-            border-radius: 30px; /* Rounded corners */
-            overflow: hidden; /* Hide overflow */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Add shadow */
-            transition: transform 0.3s ease; /* Scale effect */
-            cursor: pointer; /* Change cursor to pointer */
-            height: 500px; /* Block height */
-            position: relative; /* Position for overlay */
+            background-color: #eff9ef;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            height: 500px;
+            position: relative;
             opacity: 0; /* Hidden initially */
-            transform: translateY(30px); /* Start below final position */
+            transform: translateY(30px); /* Move down initially */
         }
 
-        /* Overlay for each block */
+        .block img, .block video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .block.in-view {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
         .overlay {
-            position: absolute; /* Overlay position */
+            position: absolute;
             top: 0;
             left: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
-            color: white; /* Text color */
-            opacity: 0; /* Hidden initially */
-            display: flex; /* Flexbox for alignment */
-            align-items: center; /* Center text vertically */
-            justify-content: center; /* Center text horizontally */
-            text-align: center; /* Center align text */
-            transition: opacity 0.3s ease; /* Smooth opacity change */
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+            text-align: center;
         }
 
-        /* Show overlay on hover */
         .block:hover .overlay {
-            opacity: 1; /* Make overlay visible */
+            opacity: 1;
+        }
+
+        .overlay h3 {
+            margin: 0;
+            font-size: 2rem;
+            font-family: 'Apple Chancery', serif;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #eff9ef;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            margin: 0 0.5rem;
+            background-color: rgba(67, 160, 71, 0.8);
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(67, 160, 71, 1);
+        }
+
+        footer {
+            background: #eff9ef;
+            color: black;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            .block-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header section -->
     <header>
         <h1>HORTIVISION</h1>
         <p>Your vision for modern horticulture</p>
     </header>
+ <div class="about-us">
+   
 
-    <!-- About Us section -->
-    <div class="about-us">
-        <div class="circle-container">
-            <div class="circle left-circle">
-                <span>About Us</span>
-            </div>
-            <div class="moving-text-container">
-                <div class="moving-text">
-                    <p><b>HORTIVISION</b> is dedicated to modernizing horticulture with innovative solutions.</p>
-                </div>
-            </div>
+     <div class="about-us">
+    <h2></h2>
+    <p></p>
+    
+    <div class="circle-container">
+        <div class="circle left-circle">
+            <span>About Us</span>
         </div>
-    </div>
+<div class="text-container">
+    <div class="moving-text">
+      <p><b>HORTIVISION</b> is dedicated to modernizing horticulture</p>
+      <p>with innovative solutions and data-driven insights.</p>
+        
+  
+      <p><b>MISSION STATEMENT:</b> is to empowering farmers with</p>
+<p>digital tech to boost efficiency and sustainability.</p>
 
-    <!-- Interactive Blocks section -->
+       <p><b>OUR VALUES:</b> is to committed to sustainability, innovation, and </p>
+      <p>collaboration, empowering farmers for a hunger-free world.</p>
+
+        <p>Contact Us: Admin@hortivision.com</p>
+        
+    </div>
+</div>
+
+
+    </div>
+</div>
+
+
+
+     <a href="tutorial.html" class="block-link">
     <div class="block-container">
-        <!-- Each block represents a page or feature -->
-        <a href="tutorial.html" class="block">
-            <img src="img1.jpg" alt="Tutorial">
+        <div class="block">
+            <img src="img1.jpg" alt="Image 1">
             <div class="overlay">
                 <h3>Tutorial</h3>
             </div>
-        </a>
-        <a href="realtime.html" class="block">
+        </div>
+
+        <a href="realtime.html" class="block-link">
+        <div class="block">
             <video autoplay loop muted>
                 <source src="video2.mp4" type="video/mp4">
             </video>
             <div class="overlay">
                 <h3>Real-Time Data</h3>
             </div>
-        </a>
-    </div>
+        </div>
 
-    <!-- Footer -->
+<a href="market-sales.html" class="block-link">
+    <div class="block">
+        <img src="image3c.jpg" alt="Image 3">
+        <div class="overlay">
+            <h3>Market Sales</h3>
+        </div>
+    </div>
+</a>
+
+<a href="foodsharingmap.html" class="block-link">
+        <div class="block">
+            <img src="image4b.jpeg" alt="Image 4">
+            <div class="overlay">
+                <h3>Food Sharing Map</h3>
+            </div>
+        </div>
+
+    <a href="fundraising.html" class="block-link">
+        <div class="block">
+            <img src="image5a.png" alt="Image 5">
+            <div class="overlay">
+                <h3>Fundraising</h3>
+            </div>
+        </div>
+
+        <a href="discussionboard.html" class="block-link">
+        <div class="block">
+            <img src="image6b.jpg" alt="Image 6">
+            <div class="overlay">
+                <h3>Discussion Board</h3>
+            </div>
+        </div>
+        </a>
+ </div>    
+  
+
+
+
+    <script>
+        // Intersection Observer for scroll-triggered animations
+        const blocks = document.querySelectorAll('.block');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                } else {
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        }, {
+            threshold: 0.2 // Trigger when 30% of the block is visible
+        });
+
+        blocks.forEach(block => {
+            observer.observe(block);
+        });
+
+    </script>
+            
     <footer>
         <p>&copy; 2024 HORTIVISION. All rights reserved.</p>
     </footer>
+    
 </body>
 </html>
