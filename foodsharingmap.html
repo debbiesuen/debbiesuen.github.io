@@ -34,24 +34,21 @@
             margin-top: 2rem;
         }
         .button-container {
-            text-align: center;
-            margin: 20px;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px; /* Space between buttons */
         }
         .home-button, .add-food-button {
-            position: absolute;
-            top: 20px;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             font-size: 16px;
             color: white;
-            background-color: #4CAF50; /* Same green color as Home button */
-        }
-        .home-button {
-            right: 120px;
-        }
-        .add-food-button {
-            right: 20px;
+            background-color: #4CAF50; /* Green color */
+            cursor: pointer;
         }
         .form-container {
             position: fixed;
@@ -66,7 +63,7 @@
             z-index: 999;
         }
         .form-container input[type="text"], .form-container input[type="file"], .form-container textarea {
-            width: 97%;
+            width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ddd;
