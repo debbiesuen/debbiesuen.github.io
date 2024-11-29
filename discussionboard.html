@@ -1,176 +1,283 @@
-import pygame
-import sys
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Board</title>
+    <style>
+        body {
+            font-family: 'Apple Chancery', serif;
+            background-color: #eff9ef;
+            color: black;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color:  #eff9ef;
+            color: black;
+            padding: 1rem;
+            position: relative;
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        .home-button:hover {
+            background-color: #45a049;
+        }
 
-# Initialize pygame
-pygame.init()
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-# Screen dimensions
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Food Waste Reduction System")
+        .post-form, .comment-form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
 
-# Colors
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
-BLUE = (0, 0, 255)
-GRAY = (200, 200, 200)
+        .post-form input,
+        .post-form textarea,
+        .comment-form textarea {
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
 
-# Fonts
-font = pygame.font.Font(None, 36)
+        .post-form input[type="file"] {
+            padding: 5px;
+        }
 
-# Donations list
-donations = []
+        .post-form button, .comment-form button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-# Button class to handle buttons
-class Button:
-    def __init__(self, text, x, y, width, height, color, action=None):
-        self.text = text
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
-        self.color = color
-        self.action = action
-    
-    def draw(self):
-        pygame.draw.rect(screen, self.color, (self.x, self.y, self.width, self.height))
-        text_surface = font.render(self.text, True, BLACK)
-        screen.blit(text_surface, (self.x + (self.width - text_surface.get_width()) // 2, self.y + (self.height - text_surface.get_height()) // 2))
-    
-    def is_clicked(self, pos):
-        x, y = pos
-        if self.x <= x <= self.x + self.width and self.y <= y <= self.y + self.height:
-            return True
-        return False
+        .post-form button:hover, .comment-form button:hover {
+            background-color: #45a049;
+        }
 
-# Input fields
-fields = []
-current_input = ""
-input_step = 0
-action_mode = None
-recipient_mode = False
-error_message = ""
+        .posts {
+            margin-top: 20px;
+        }
 
-# Function to display donations
-def display_donations():
-    """Display donations list."""
-    y_offset = 150
-    draw_text("Available Donations:", BLUE, 50, 50)
-    for donation in donations:
-        draw_text(f"Food: {donation['name']}, Quantity: {donation['quantity']}kg", GREEN, 50, y_offset)
-        y_offset += 40
+        .post, .comment {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
 
-# Function to draw text on screen
-def draw_text(text, color, x, y):
-    """Render and draw text."""
-    text_surface = font.render(text, True, color)
-    screen.blit(text_surface, (x, y))
+        .post h3, .comment h4 {
+            margin-top: 0;
+            font-size: 18px;
+        }
 
-# Function to add a donation
-def add_donation():
-    """Handle adding a donation."""
-    global input_step, current_input, fields, error_message
-    if input_step == 0:
-        fields = ["Enter food name:", "Enter quantity (kg):", "Enter shelf life (days):", "Enter location:"]
-        current_input = ""
-        error_message = ""
-    if input_step == 1:
-        fields[0] = f"Food name: {current_input}"
-    if input_step == 2:
-        fields[1] = f"Quantity (kg): {current_input}"
-    if input_step == 3:
-        fields[2] = f"Shelf life (days): {current_input}"
-    if input_step == 4:
-        fields[3] = f"Location: {current_input}"
-        # Adding donation to list
-        donations.append({"name": fields[0].split(":")[1].strip(), "quantity": float(fields[1].split(":")[1].strip()), "location": fields[3].split(":")[1].strip()})
-        error_message = f"Donation added: {fields[0].split(':')[1].strip()} - {fields[1].split(':')[1].strip()} kg"
-        input_step = 0  # Reset input step for next donation
+        .post img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
 
-# Function to match recipient
-def match_recipient():
-    """Handle matching recipient."""
-    global recipient_mode, input_step, fields, current_input
-    if recipient_mode:
-        if input_step == 0:
-            fields = ["Enter recipient food:", "Enter quantity requested (kg):", "Enter recipient location:"]
-            current_input = ""
-        if input_step == 1:
-            fields[0] = f"Recipient food: {current_input}"
-        if input_step == 2:
-            fields[1] = f"Quantity requested (kg): {current_input}"
-        if input_step == 3:
-            fields[2] = f"Recipient location: {current_input}"
-            # Matching recipient
-            matched = []
-            requested_food = fields[0].split(":")[1].strip()
-            requested_quantity = float(fields[1].split(":")[1].strip())
-            location = fields[2].split(":")[1].strip()
-            for donation in donations[:]:
-                if donation["name"] == requested_food and donation["location"] == location and donation["quantity"] >= requested_quantity:
-                    matched.append(donation)
-                    donation["quantity"] -= requested_quantity  # Remove matched quantity
-                    if donation["quantity"] == 0:
-                        donations.remove(donation)  # Remove if quantity becomes 0
-            if matched:
-                error_message = f"Matched recipient with {len(matched)} food items in {location}: {matched[0]['name']}, {matched[0]['quantity']}kg"
-            else:
-                error_message = "No suitable recipient found."
-            recipient_mode = False
-            input_step = 0
+        .comment {
+            margin-left: 20px;
+        }
 
-# Main loop
-running = True
-buttons = [
-    Button("Add Donation", 50, 50, 200, 50, GREEN, add_donation),
-    Button("Match Recipient", 50, 150, 200, 50, BLUE, match_recipient),
-    Button("Exit", 50, 250, 200, 50, RED, sys.exit)
-]
+        footer {
+            background: #eff9ef;
+            color: black;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        footer p {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
 
-while running:
-    screen.fill(WHITE)
+<header>
+    <h1>Join the Conversation! </h1>
+    <a href="hortivision.html" class="home-button">Home</a>
+</header>
+      
+<div class="description">
+    <p>It is a space to share ideas, ask questions, and collaborate with a global community. </p>
+    <p>Your input is valuable and helps us grow together. </p>
+    <p>Let's create meaningful discussions that drive change and innovation!</p>
+</div>
+            
+<div class="container">
+    <h1>Discussion Board</h1>
 
-    # Draw buttons
-    for button in buttons:
-        button.draw()
+    <!-- Post Form -->
+    <div class="post-form">
+        <input type="text" id="userName" placeholder="Enter your name" required>
+        <textarea id="message" placeholder="Write your message..." rows="4" required></textarea>
+        <input type="file" id="image" accept="image/*">
+        <button onclick="postMessage()">Post</button>
+    </div>
 
-    # Display input fields and current data
-    y_offset = 300
-    for i, field in enumerate(fields):
-        draw_text(field, BLACK, 50, y_offset + i * 40)
+    <!-- Display Posts -->
+    <div class="posts" id="posts">
+        <!-- Posts will appear here -->
+    </div>
+</div>
 
-    # Display error message
-    if error_message:
-        draw_text(error_message, RED, 50, y_offset + len(fields) * 40)
+<script>
+    // Load posts from local storage
+    function loadPosts() {
+        const postsContainer = document.getElementById('posts');
+        postsContainer.innerHTML = ''; // Clear existing posts
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+        posts.forEach((post, index) => displayPost(post, index));
+    }
 
-    # Check for events
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+    // Save posts to local storage
+    function savePosts(posts) {
+        localStorage.setItem('posts', JSON.stringify(posts));
+    }
 
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            pos = pygame.mouse.get_pos()
-            # Check if any button is clicked
-            for button in buttons:
-                if button.is_clicked(pos):
-                    button.action()
+    // Display a single post
+    function displayPost(post, index) {
+        const postsContainer = document.getElementById('posts');
+        
+        const postContainer = document.createElement('div');
+        postContainer.classList.add('post');
+        postContainer.dataset.index = index;
 
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RETURN:
-                input_step += 1
-                if input_step == 4:
-                    add_donation()  # Finish adding donation after the last step
-                elif input_step == 3:
-                    match_recipient()  # Finish recipient matching
+        const postTitle = document.createElement('h3');
+        postTitle.textContent = post.userName;
 
-            elif event.key == pygame.K_BACKSPACE:
-                current_input = current_input[:-1]
-            else:
-                current_input += event.unicode
+        const postMessage = document.createElement('p');
+        postMessage.textContent = post.message;
 
-    pygame.display.flip()
+        postContainer.appendChild(postTitle);
+        postContainer.appendChild(postMessage);
 
-pygame.quit()
+        // Add image if available
+        if (post.imageUrl) {
+            const postImage = document.createElement('img');
+            postImage.src = post.imageUrl;
+            postContainer.appendChild(postImage);
+        }
+
+        // Add comment section
+        const commentSection = document.createElement('div');
+        commentSection.classList.add('comments');
+        
+        if (post.comments) {
+            post.comments.forEach(comment => displayComment(comment, commentSection));
+        }
+
+        const commentForm = document.createElement('div');
+        commentForm.classList.add('comment-form');
+        commentForm.innerHTML = `
+            <textarea placeholder="Add a comment..." rows="2"></textarea>
+            <button onclick="addComment(${index}, this)">Comment</button>
+        `;
+        postContainer.appendChild(commentSection);
+        postContainer.appendChild(commentForm);
+
+        postsContainer.prepend(postContainer);
+    }
+
+    // Display a single comment
+    function displayComment(comment, container) {
+        const commentDiv = document.createElement('div');
+        commentDiv.classList.add('comment');
+        
+        const commentAuthor = document.createElement('h4');
+        commentAuthor.textContent = comment.userName;
+
+        const commentMessage = document.createElement('p');
+        commentMessage.textContent = comment.message;
+
+        commentDiv.appendChild(commentAuthor);
+        commentDiv.appendChild(commentMessage);
+
+        container.appendChild(commentDiv);
+    }
+
+    // Post a message
+    function postMessage() {
+        const userName = document.getElementById('userName').value;
+        const message = document.getElementById('message').value;
+        const imageInput = document.getElementById('image');
+
+        if (userName.trim() === '' || message.trim() === '') {
+            alert('Please enter both your name and a message.');
+            return;
+        }
+
+        let imageUrl = '';
+        if (imageInput.files.length > 0) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imageUrl = e.target.result;
+                saveAndDisplayPost(userName, message, imageUrl);
+            };
+            reader.readAsDataURL(imageInput.files[0]);
+        } else {
+            saveAndDisplayPost(userName, message, '');
+        }
+    }
+
+    function saveAndDisplayPost(userName, message, imageUrl) {
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+        posts.push({ userName, message, imageUrl, comments: [] });
+        savePosts(posts);
+        loadPosts();
+        document.getElementById('userName').value = '';
+        document.getElementById('message').value = '';
+        document.getElementById('image').value = '';
+    }
+
+    // Add a comment to a post
+    function addComment(postIndex, button) {
+        const commentInput = button.previousElementSibling;
+        const commentText = commentInput.value.trim();
+        const userName = prompt('Enter your name:');
+        if (userName && commentText) {
+            const posts = JSON.parse(localStorage.getItem('posts'));
+            posts[postIndex].comments.push({ userName, message: commentText });
+            savePosts(posts);
+            loadPosts();
+        } else {
+            alert('Both name and comment are required!');
+        }
+    }
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', loadPosts);
+</script>
+
+<footer>
+    <p>&copy; 2024 HORTIVISION. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
