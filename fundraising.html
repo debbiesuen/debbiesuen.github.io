@@ -152,15 +152,17 @@ function loadDonors() {
     const donors = JSON.parse(localStorage.getItem('donors')) || [];
     const donorListContainer = document.getElementById('donor-list');
     donorListContainer.innerHTML = '<h2>Thank You Donors</h2>'; // Reset the donor list header
+    // Display all donors in the correct order
     donors.forEach(donor => displayDonor(donor, donorListContainer));
 }
 
-// Display a single donor
+// Display a single donor at the top of the list
 function displayDonor(donor, container) {
     const donorDiv = document.createElement('div');
     donorDiv.classList.add('donor');
     donorDiv.innerHTML = `<strong>${donor.name}</strong> donated <strong>${donor.amount} TWD</strong>`;
-    container.insertBefore(donorDiv, container.firstChild); // Insert new donor at the top
+    // Insert the new donor at the top
+    container.appendChild(donorDiv); // Append it to the end of the list, which is the latest place
 }
 
 // Handle form submission
@@ -182,7 +184,7 @@ document.getElementById('donation-form').addEventListener('submit', function (e)
     // Retrieve existing donors from localStorage
     const donors = JSON.parse(localStorage.getItem('donors')) || [];
 
-    // Add the new donor to the list
+    // Add the new donor to the list at the top
     donors.unshift(newDonor); // Add to the start of the array (newest first)
 
     // Save updated list back to localStorage
