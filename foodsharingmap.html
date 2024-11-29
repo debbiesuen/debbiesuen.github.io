@@ -36,9 +36,10 @@
         .button-container {
             position: fixed;
             top: 20px;
-            right: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            gap: 10px; /* Space between buttons */
+            gap: 20px; /* Space between buttons */
         }
         .home-button, .add-food-button {
             padding: 10px 20px;
@@ -99,7 +100,6 @@
         <h2>Add New Food Location</h2>
         <input type="text" id="foodName" placeholder="Food Name" required>
         <textarea id="foodDescription" placeholder="Description" rows="4" required></textarea>
-        <input type="text" id="contact" placeholder="Contact Information" required>
         <input type="file" id="foodImage" accept="image/*" required>
         <button type="button" onclick="submitFood()">Submit</button>
     </div>
@@ -149,11 +149,7 @@
     // Add a click event listener to the map to set the location for the food
     map.on('click', function(e) {
         currentLatLng = e.latlng;
-
-        // Show the "Add Food" button at the clicked position
-        L.marker(currentLatLng).addTo(map)
-            .bindPopup('<button onclick="toggleForm()">Add Food</button>')
-            .openPopup();
+        alert('Click position selected. Now fill out the form to submit the food location.');
     });
 
     // Toggle the form visibility
@@ -172,40 +168,38 @@
         // Get values from the form
         const foodName = document.getElementById('foodName').value;
         const foodDescription = document.getElementById('foodDescription').value;
-        const foodContact = document.getElementById('contact').value;
         const foodImage = document.getElementById('foodImage').files[0];
 
         // Check if all fields are filled
-        if (!foodName || !foodDescription || !foodContact || !foodImage) {
+        if (!foodName || !foodDescription || !foodImage) {
             alert("Please fill in all fields.");
             return;
         }
 
-        // You can process the submitted data here (e.g., save it to a database or show it on the map)
-
-        // Add the new food marker to the map
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            L.marker(currentLatLng).addTo(map)
-                .bindPopup(`
-                    <strong>Food: </strong>${foodName}<br>
-                    <strong>Description: </strong>${foodDescription}<br>
-                    <strong>Contact: </strong>${foodContact}<br>
-                    <img src="${e.target.result}" alt="${foodName}" style="width:100%; height:auto; border-radius:5px; margin-top:5px;">
-                `);
+        // Create an object for the new food
+        const newFood = {
+            lat: currentLatLng.lat,
+            lng: currentLatLng.lng,
+            food: foodName,
+            description: foodDescription,
+            image: URL.createObjectURL(foodImage) // Using URL.createObjectURL to display the image
         };
-        reader.readAsDataURL(foodImage);
 
-        // Hide the form
-        toggleForm();
+        // Add the new food to the map
+        var marker = L.marker([newFood.lat, newFood.lng]).addTo(map);
+        marker.bindPopup(`
+            <strong>Food: </strong>${newFood.food}<br>
+            <strong>Description: </strong>${newFood.description}<br>
+            <img src="${newFood.image}" alt="${newFood.food}" style="width:100%; height:auto; border-radius:5px; margin-top:5px;">
+        `);
 
-        // Clear form fields
+        // Clear the form and hide it
         document.getElementById('foodName').value = '';
         document.getElementById('foodDescription').value = '';
-        document.getElementById('contact').value = '';
         document.getElementById('foodImage').value = '';
+        toggleForm(); // Close the form
     }
-</script>
+    </script>
 
 </body>
 </html>
