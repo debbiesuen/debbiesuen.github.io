@@ -80,7 +80,23 @@
         button:hover {
             background-color: #45a049;
         }
-        
+
+        .donor-list {
+            margin-top: 30px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        .donor {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
         footer {
             text-align: center;
             padding: 1rem;
@@ -93,18 +109,17 @@
 
 <header>
     <h1>Help Us Make a Difference</h1>
-    <a href="hortivision.html" class="home-button">Home</a> <!-- Home Page Button -->
+    <a href="hortivision.html" class="home-button">Home</a>
 </header>
 
 <div class="container">
     <div class="description">
-        <p>We are raising funds to support global small holders. Your contributions will help us achieve our goal of Hortivision.
-            Every donation, no matter how small, brings us one step closer to making a real impact!</p>
+        <p>We are raising funds to support global small holders. Your contributions will help us achieve our goal of Hortivision. Every donation, no matter how small, brings us one step closer to making a real impact!</p>
     </div>
 
     <div class="donate-form">
         <h2>Donate Now</h2>
-        <form action="/submit_donation" method="post">
+        <form id="donation-form">
             <div class="form-group">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" required>
@@ -121,10 +136,68 @@
         </form>
     </div>
 
+    <div class="donor-list" id="donor-list">
+        <h2>Thank You Donors</h2>
+        <!-- Donor posts will be displayed here -->
+    </div>
+
     <footer>
         <p>&copy; 2024 HORTIVISION. All Rights Reserved.</p>
     </footer>
 </div>
+
+<script>
+// Load existing donors from local storage
+function loadDonors() {
+    const donors = JSON.parse(localStorage.getItem('donors')) || [];
+    const donorListContainer = document.getElementById('donor-list');
+    donorListContainer.innerHTML = '<h2>Thank You Donors</h2>'; // Reset the donor list header
+    donors.forEach(donor => displayDonor(donor, donorListContainer));
+}
+
+// Display a single donor
+function displayDonor(donor, container) {
+    const donorDiv = document.createElement('div');
+    donorDiv.classList.add('donor');
+    donorDiv.innerHTML = `<strong>${donor.name}</strong> donated <strong>${donor.amount} TWD</strong>`;
+    container.appendChild(donorDiv);
+}
+
+// Handle form submission
+document.getElementById('donation-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Get values from the form
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const amount = document.getElementById('amount').value;
+
+    // Create a donor object
+    const newDonor = {
+        name: name,
+        email: email,
+        amount: amount
+    };
+
+    // Retrieve existing donors from localStorage
+    const donors = JSON.parse(localStorage.getItem('donors')) || [];
+
+    // Add the new donor to the list
+    donors.push(newDonor);
+
+    // Save updated list back to localStorage
+    localStorage.setItem('donors', JSON.stringify(donors));
+
+    // Clear the form fields
+    document.getElementById('donation-form').reset();
+
+    // Reload the donor list
+    loadDonors();
+});
+
+// Load donor list when the page is loaded
+document.addEventListener('DOMContentLoaded', loadDonors);
+</script>
 
 </body>
 </html>
