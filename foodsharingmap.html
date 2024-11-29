@@ -36,10 +36,10 @@
         .button-container {
             position: fixed;
             top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            right: 20px;
             display: flex;
-            gap: 20px; /* Space between buttons */
+            flex-direction: column;
+            gap: 10px; /* Space between buttons */
         }
         .home-button, .add-food-button {
             padding: 10px 20px;
@@ -149,7 +149,11 @@
     // Add a click event listener to the map to set the location for the food
     map.on('click', function(e) {
         currentLatLng = e.latlng;
-        alert('Click position selected. Now fill out the form to submit the food location.');
+
+        // Show the "Add Food" button at the clicked position
+        L.marker(currentLatLng).addTo(map)
+            .bindPopup('<button onclick="toggleForm()">Add Food</button>')
+            .openPopup();
     });
 
     // Toggle the form visibility
@@ -176,28 +180,11 @@
             return;
         }
 
-        // Create an object for the new food
-        const newFood = {
-            lat: currentLatLng.lat,
-            lng: currentLatLng.lng,
-            food: foodName,
-            description: foodDescription,
-            image: URL.createObjectURL(foodImage) // Using URL.createObjectURL to display the image
-        };
+        // You can process the submitted data here (e.g., save it to a database or display it on the map)
+        alert("Food location added successfully!");
 
-        // Add the new food to the map
-        var marker = L.marker([newFood.lat, newFood.lng]).addTo(map);
-        marker.bindPopup(`
-            <strong>Food: </strong>${newFood.food}<br>
-            <strong>Description: </strong>${newFood.description}<br>
-            <img src="${newFood.image}" alt="${newFood.food}" style="width:100%; height:auto; border-radius:5px; margin-top:5px;">
-        `);
-
-        // Clear the form and hide it
-        document.getElementById('foodName').value = '';
-        document.getElementById('foodDescription').value = '';
-        document.getElementById('foodImage').value = '';
-        toggleForm(); // Close the form
+        // Hide the form after submission
+        toggleForm();
     }
     </script>
 
