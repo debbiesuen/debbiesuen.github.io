@@ -160,7 +160,7 @@ function displayDonor(donor, container) {
     const donorDiv = document.createElement('div');
     donorDiv.classList.add('donor');
     donorDiv.innerHTML = `<strong>${donor.name}</strong> donated <strong>${donor.amount} TWD</strong>`;
-    container.appendChild(donorDiv);
+    container.insertBefore(donorDiv, container.firstChild); // Insert new donor at the top
 }
 
 // Handle form submission
@@ -183,7 +183,7 @@ document.getElementById('donation-form').addEventListener('submit', function (e)
     const donors = JSON.parse(localStorage.getItem('donors')) || [];
 
     // Add the new donor to the list
-    donors.push(newDonor);
+    donors.unshift(newDonor); // Add to the start of the array (newest first)
 
     // Save updated list back to localStorage
     localStorage.setItem('donors', JSON.stringify(donors));
