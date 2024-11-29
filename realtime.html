@@ -24,24 +24,24 @@
         }
 
         /* Home Button */
-.home-button {
-    position: fixed;         /* Fixed position */
-    top: 20px;               /* Distance from the top */
-    right: 20px;             /* Distance from the right */
-    background-color: #4CAF50; /* Green background */
-    color: white;             /* White text */
-    padding: 10px 20px;       /* Padding for the button */
-    border: none;             /* No border */
-    border-radius: 5px;       /* Rounded corners */
-    font-size: 16px;          /* Font size */
-    text-decoration: none;    /* No underline */
-    cursor: pointer;          /* Pointer cursor on hover */
-    z-index: 1000;            /* Make sure it stays above other elements */
-}
+        .home-button {
+            position: fixed;         /* Fixed position */
+            top: 20px;               /* Distance from the top */
+            right: 20px;             /* Distance from the right */
+            background-color: #4CAF50; /* Green background */
+            color: white;             /* White text */
+            padding: 10px 20px;       /* Padding for the button */
+            border: none;             /* No border */
+            border-radius: 5px;       /* Rounded corners */
+            font-size: 16px;          /* Font size */
+            text-decoration: none;    /* No underline */
+            cursor: pointer;          /* Pointer cursor on hover */
+            z-index: 1000;            /* Make sure it stays above other elements */
+        }
 
-.home-button:hover {
-    background-color: #45a049; /* Darker green on hover */
-}
+        .home-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
 
         /* Header */
         h1 {
@@ -93,71 +93,69 @@
     <button class="home-button" onclick="window.location.href='hortivision.html'">Home</button>
 </div>
 
+<!-- Header -->
+<h1>Real-Time Weather Forecast</h1>
 
+<!-- Real-Time Weather Map -->
+<div id="map"></div>
 
-    <!-- Header -->
-    <h1>Real-Time Weather Forecast</h1>
-
-    <!-- Real-Time Weather Map -->
-    <div id="map"></div>
-
-    <!-- Forecast and Actions Section -->
-    <div class="forecast-container">
-        <div class="forecast-details">
-            <h2>Current Weather in Taiwan</h2>
-            <p><strong>Temperature:</strong> 26°C</p>
-            <p><strong>Humidity:</strong> 85%</p>
-            <p><strong>Rainfall Probability:</strong> 90%</p>
-            <p><strong>Wind Speed:</strong> 15 km/h</p>
-            <p class="important">It is likely to rain today. Prepare accordingly!</p>
-        </div>
-
-        <div class="actions-container">
-            <h3>Farmer's Guide for Rain Preparation</h3>
-            <ul>
-                <li><strong>Crop Protection:</strong> Cover sensitive crops with waterproof sheets or install temporary tunnels.</li>
-                <li><strong>Drainage:</strong> Ensure that drainage systems are clear of debris to prevent waterlogging.</li>
-                <li><strong>Harvesting:</strong> If heavy rain is expected, consider harvesting mature crops beforehand.</li>
-                <li><strong>Fertilizers:</strong> Avoid applying fertilizers right before the rain to prevent runoff.</li>
-                <li><strong>Livestock:</strong> Move animals to higher ground or shelters to keep them dry.</li>
-                <li><strong>Storage:</strong> Cover stored produce or equipment to avoid water damage.</li>
-            </ul>
-        </div>
+<!-- Forecast and Actions Section -->
+<div class="forecast-container">
+    <div class="forecast-details">
+        <h2>Current Weather in Taiwan</h2>
+        <p><strong>Temperature:</strong> 26°C</p>
+        <p><strong>Humidity:</strong> 85%</p>
+        <p><strong>Rainfall Probability:</strong> 90%</p>
+        <p><strong>Wind Speed:</strong> 15 km/h</p>
+        <p class="important">It is likely to rain today. Prepare accordingly!</p>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 HORTIVISION. All rights reserved.</p>
-    </footer>
+    <div class="actions-container">
+        <h3>Farmer's Guide for Rain Preparation</h3>
+        <ul>
+            <li><strong>Crop Protection:</strong> Cover sensitive crops with waterproof sheets or install temporary tunnels.</li>
+            <li><strong>Drainage:</strong> Ensure that drainage systems are clear of debris to prevent waterlogging.</li>
+            <li><strong>Harvesting:</strong> If heavy rain is expected, consider harvesting mature crops beforehand.</li>
+            <li><strong>Fertilizers:</strong> Avoid applying fertilizers right before the rain to prevent runoff.</li>
+            <li><strong>Livestock:</strong> Move animals to higher ground or shelters to keep them dry.</li>
+            <li><strong>Storage:</strong> Cover stored produce or equipment to avoid water damage.</li>
+        </ul>
+    </div>
+</div>
 
-    <script>
-        // Initialize Leaflet map centered on Taiwan
-        const map = L.map('map').setView([23.6978, 120.9605], 7); // Center Taiwan
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2024 HORTIVISION. All rights reserved.</p>
+</footer>
 
-        // Add Mapbox satellite imagery tiles (replace 'your-access-token' with your actual Mapbox token)
-        L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=your-access-token', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery &copy; <a href="https://www.mapbox.com">Mapbox</a>',
-            maxZoom: 18
-        }).addTo(map);
+<script>
+    // Initialize Leaflet map centered on Taiwan
+    const map = L.map('map').setView([23.6978, 120.9605], 7); // Center Taiwan
 
-        // Fake weather data for multiple cities in Taiwan
-        const weatherData = [
-            { lat: 25.033, lon: 121.5654, temp: "28°C", humidity: "80%", desc: "Sunny", city: "Taipei" },
-            { lat: 22.6273, lon: 120.3014, temp: "30°C", humidity: "78%", desc: "Cloudy", city: "Kaohsiung" },
-            { lat: 24.1477, lon: 120.6736, temp: "27°C", humidity: "85%", desc: "Rainy", city: "Taichung" },
-            { lat: 23.4801, lon: 120.4491, temp: "26°C", humidity: "90%", desc: "Partly Cloudy", city: "Chiayi" }
-        ];
+    // Add OpenStreetMap tiles (no API key required)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19
+    }).addTo(map);
 
-        // Add weather markers for all cities
-        weatherData.forEach(data => {
-            const marker = L.marker([data.lat, data.lon]).addTo(map);
-            marker.bindPopup(`
-                <strong>${data.city}</strong><br>
-                <strong>Temperature:</strong> ${data.temp}<br>
-                <strong>Humidity:</strong> ${data.humidity}<br>
-                <strong>Condition:</strong> ${data.desc}
-            `);
-        });
-    </script>
+    // Fake weather data for multiple cities in Taiwan
+    const weatherData = [
+        { lat: 25.033, lon: 121.5654, temp: "28°C", humidity: "80%", desc: "Sunny", city: "Taipei" },
+        { lat: 22.6273, lon: 120.3014, temp: "30°C", humidity: "78%", desc: "Cloudy", city: "Kaohsiung" },
+        { lat: 24.1477, lon: 120.6736, temp: "27°C", humidity: "85%", desc: "Rainy", city: "Taichung" },
+        { lat: 23.4801, lon: 120.4491, temp: "26°C", humidity: "90%", desc: "Partly Cloudy", city: "Chiayi" }
+    ];
+
+    // Add weather markers for all cities
+    weatherData.forEach(data => {
+        const marker = L.marker([data.lat, data.lon]).addTo(map);
+        marker.bindPopup(`
+            <strong>${data.city}</strong><br>
+            <strong>Temperature:</strong> ${data.temp}<br>
+            <strong>Humidity:</strong> ${data.humidity}<br>
+            <strong>Condition:</strong> ${data.desc}
+        `);
+    });
+</script>
 </body>
 </html>
