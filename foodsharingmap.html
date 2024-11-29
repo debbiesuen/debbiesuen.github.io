@@ -45,14 +45,13 @@
             border-radius: 5px;
             font-size: 16px;
             color: white;
+            background-color: #4CAF50; /* Same green color as Home button */
         }
         .home-button {
             right: 120px;
-            background-color: #4CAF50;
         }
         .add-food-button {
             right: 20px;
-            background-color: #f39c12;
         }
         .form-container {
             position: fixed;
@@ -202,8 +201,6 @@
         document.getElementById('foodDescription').value = '';
         document.getElementById('foodImage').value = '';
         toggleForm(); // Close the form
-
-        // Optionally, you can save the new food to localStorage or a database for persistent storage
     }
     </script>
 
