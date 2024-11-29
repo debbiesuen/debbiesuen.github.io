@@ -38,7 +38,6 @@
             top: 20px;
             right: 20px;
             display: flex;
-            flex-direction: column;
             gap: 10px; /* Space between buttons */
         }
         .home-button, .add-food-button {
@@ -100,6 +99,7 @@
         <h2>Add New Food Location</h2>
         <input type="text" id="foodName" placeholder="Food Name" required>
         <textarea id="foodDescription" placeholder="Description" rows="4" required></textarea>
+        <input type="text" id="contact" placeholder="Contact Information" required>
         <input type="file" id="foodImage" accept="image/*" required>
         <button type="button" onclick="submitFood()">Submit</button>
     </div>
@@ -172,21 +172,40 @@
         // Get values from the form
         const foodName = document.getElementById('foodName').value;
         const foodDescription = document.getElementById('foodDescription').value;
+        const foodContact = document.getElementById('contact').value;
         const foodImage = document.getElementById('foodImage').files[0];
 
         // Check if all fields are filled
-        if (!foodName || !foodDescription || !foodImage) {
+        if (!foodName || !foodDescription || !foodContact || !foodImage) {
             alert("Please fill in all fields.");
             return;
         }
 
-        // You can process the submitted data here (e.g., save it to a database or display it on the map)
-        alert("Food location added successfully!");
+        // You can process the submitted data here (e.g., save it to a database or show it on the map)
 
-        // Hide the form after submission
+        // Add the new food marker to the map
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            L.marker(currentLatLng).addTo(map)
+                .bindPopup(`
+                    <strong>Food: </strong>${foodName}<br>
+                    <strong>Description: </strong>${foodDescription}<br>
+                    <strong>Contact: </strong>${foodContact}<br>
+                    <img src="${e.target.result}" alt="${foodName}" style="width:100%; height:auto; border-radius:5px; margin-top:5px;">
+                `);
+        };
+        reader.readAsDataURL(foodImage);
+
+        // Hide the form
         toggleForm();
+
+        // Clear form fields
+        document.getElementById('foodName').value = '';
+        document.getElementById('foodDescription').value = '';
+        document.getElementById('contact').value = '';
+        document.getElementById('foodImage').value = '';
     }
-    </script>
+</script>
 
 </body>
 </html>
