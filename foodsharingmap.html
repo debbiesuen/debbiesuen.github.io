@@ -21,7 +21,7 @@
         }
         .header, .footer {
             background-color: #eff9ef;
-            color: #333；
+            color: #333;
             padding: 10px;
             text-align: center;
         }
@@ -37,17 +37,49 @@
             text-align: center;
             margin: 20px;
         }
-        .home-button {
-           position: absolute;
+        .home-button, .add-food-button {
+            position: absolute;
             top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            color: white;
+        }
+        .home-button {
+            right: 120px;
+            background-color: #4CAF50;
+        }
+        .add-food-button {
             right: 20px;
+            background-color: #f39c12;
+        }
+        .form-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 999;
+        }
+        .form-container input[type="text"], .form-container input[type="file"], .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-container button {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             font-size: 16px;
-            text-decoration: none;
         }
     </style>
 </head>
@@ -58,13 +90,23 @@
         <h1>Food Sharing Map</h1>
     </header>
 
-    <!-- Button Container for Homepage Button -->
+    <!-- Button Container for Homepage Button and Add Food Button -->
     <div class="button-container">
         <button class="home-button" onclick="window.location.href='hortivision.html'">Home</button>
+        <button class="add-food-button" onclick="toggleForm()">Add Food</button>
     </div>
 
     <!-- Map Container -->
     <div id="map"></div>
+
+    <!-- Form for Adding Food -->
+    <div class="form-container" id="foodForm">
+        <h2>Add New Food Location</h2>
+        <input type="text" id="foodName" placeholder="Food Name" required>
+        <textarea id="foodDescription" placeholder="Description" rows="4" required></textarea>
+        <input type="file" id="foodImage" accept="image/*" required>
+        <button type="button" onclick="submitFood()">Submit</button>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -91,9 +133,9 @@
         { lat: 25.0123, lng: 121.2146, food: "Blueberries", description: "Expired soon, so pls be quick, my children doesn't like it.  Contact: 123456000", image: "share4.jpg" },
         { lat: 24.9515, lng: 121.2986, food: "Noodle", description: "handmade 1week ago, too many can't finish it. Contact: 123450000", image: "share5.jpg" },
         { lat: 24.8834, lng: 121.2950, food: "Sticky Rice Balls", description: "Bought 2days ago, doesnt like it. Contact: 123482832 ", image: "share6.jpg" },
-        { lat: 25.0025, lng: 121.3452, food: "tomato", description: "Home planted, too many, cannot finish. Contact: 123451212", image: "share7.jpeg" },
+        { lat: 25.0025, lng: 121.3452, food: "Tomato", description: "Home planted, too many, cannot finish. Contact: 123451212", image: "share7.jpeg" },
         { lat: 24.9926, lng: 121.1018, food: "Herbal Jelly", description: "Bought 3days ago, doesn't like it. Contact: 123356789", image: "share8.jpg" },
-        { lat: 25.0295, lng: 121.2762, food: "Sticky Rice", description: "Opened, just ate alittle, doesn't like it. Contact: 122323789", image: "share9.jpg" }
+        { lat: 25.0295, lng: 121.2762, food: "Sticky Rice", description: "Opened, just ate a little, doesn't like it. Contact: 122323789", image: "share9.jpg" }
     ];
 
     // Add markers for each food location
@@ -105,8 +147,65 @@
             <img src="${location.image}" alt="${location.food}" style="width:100%; height:auto; border-radius:5px; margin-top:5px;">
         `);
     });
-</script>
 
+    var currentLatLng = null; // Store the current click position for placing a marker
+
+    // Add a click event listener to the map to set the location for the food
+    map.on('click', function(e) {
+        currentLatLng = e.latlng;
+        alert('Click position selected. Now fill out the form to submit the food location.');
+    });
+
+    // Toggle the form visibility
+    function toggleForm() {
+        const form = document.getElementById('foodForm');
+        form.style.display = form.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Submit the food form
+    function submitFood() {
+        if (!currentLatLng) {
+            alert("Please click on the map to select a location.");
+            return;
+        }
+
+        // Get values from the form
+        const foodName = document.getElementById('foodName').value;
+        const foodDescription = document.getElementById('foodDescription').value;
+        const foodImage = document.getElementById('foodImage').files[0];
+
+        // Check if all fields are filled
+        if (!foodName || !foodDescription || !foodImage) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        // Create an object for the new food
+        const newFood = {
+            lat: currentLatLng.lat,
+            lng: currentLatLng.lng,
+            food: foodName,
+            description: foodDescription,
+            image: URL.createObjectURL(foodImage) // Using URL.createObjectURL to display the image
+        };
+
+        // Add the new food to the map
+        var marker = L.marker([newFood.lat, newFood.lng]).addTo(map);
+        marker.bindPopup(`
+            <strong>Food: </strong>${newFood.food}<br>
+            <strong>Description: </strong>${newFood.description}<br>
+            <img src="${newFood.image}" alt="${newFood.food}" style="width:100%; height:auto; border-radius:5px; margin-top:5px;">
+        `);
+
+        // Clear the form and hide it
+        document.getElementById('foodName').value = '';
+        document.getElementById('foodDescription').value = '';
+        document.getElementById('foodImage').value = '';
+        toggleForm(); // Close the form
+
+        // Optionally, you can save the new food to localStorage or a database for persistent storage
+    }
+    </script>
 
 </body>
 </html>
