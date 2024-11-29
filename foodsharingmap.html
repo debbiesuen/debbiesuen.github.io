@@ -62,7 +62,7 @@
             z-index: 999;
         }
         .form-container input[type="text"], .form-container input[type="file"], .form-container textarea {
-            width: 95%;
+            width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ddd;
@@ -99,6 +99,7 @@
         <h2>Add New Food Location</h2>
         <input type="text" id="foodName" placeholder="Food Name" required>
         <textarea id="foodDescription" placeholder="Description" rows="4" required></textarea>
+        <input type="text" id="contact" placeholder="Contact Info" required>
         <input type="file" id="foodImage" accept="image/*" required>
         <button type="button" onclick="submitFood()">Submit</button>
     </div>
@@ -139,6 +140,7 @@
         marker.bindPopup(`
             <strong>Food: </strong>${location.food}<br>
             <strong>Description: </strong>${location.description}<br>
+            <strong>Contact: </strong>${location.contact || 'N/A'}<br>
             <img src="${location.image}" alt="${location.food}" style="width:100%; height:auto; border-radius:5px; margin-top:5px;">
         `);
     });
@@ -167,10 +169,11 @@
         // Get values from the form
         const foodName = document.getElementById('foodName').value;
         const foodDescription = document.getElementById('foodDescription').value;
+        const contactInfo = document.getElementById('contact').value;
         const foodImage = document.getElementById('foodImage').files[0];
 
         // Check if all fields are filled
-        if (!foodName || !foodDescription || !foodImage) {
+        if (!foodName || !foodDescription || !contactInfo || !foodImage) {
             alert("Please fill in all fields.");
             return;
         }
@@ -181,6 +184,7 @@
             lng: currentLatLng.lng,
             food: foodName,
             description: foodDescription,
+            contact: contactInfo,
             image: URL.createObjectURL(foodImage) // Using URL.createObjectURL to display the image
         };
 
@@ -189,12 +193,14 @@
         marker.bindPopup(`
             <strong>Food: </strong>${newFood.food}<br>
             <strong>Description: </strong>${newFood.description}<br>
+            <strong>Contact: </strong>${newFood.contact}<br>
             <img src="${newFood.image}" alt="${newFood.food}" style="width:100%; height:auto; border-radius:5px; margin-top:5px;">
         `);
 
         // Clear the form and hide it
         document.getElementById('foodName').value = '';
         document.getElementById('foodDescription').value = '';
+        document.getElementById('contact').value = '';
         document.getElementById('foodImage').value = '';
         toggleForm(); // Close the form
     }
