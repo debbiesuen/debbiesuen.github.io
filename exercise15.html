@@ -8,7 +8,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: lightblue;
+            background-color: white;
         }
 
         .container {
@@ -16,6 +16,7 @@
             flex-wrap: wrap;
             justify-content: center;
             padding: 10px;
+            gap: 10px;
         }
 
         .header {
@@ -26,13 +27,13 @@
 
         .content {
             background-color: turquoise;
-            width: 100%;
+            width: calc(33.33% - 20px); /* Default horizontal layout */
             height: 100px;
         }
 
         .footer {
             background-color: lightgray;
-            width: 50%; /* Two columns for small screens */
+            width: calc(25% - 20px); /* Default horizontal layout */
             height: 50px;
         }
 
@@ -43,13 +44,13 @@
             }
 
             .content {
-                width: calc(33.33% - 10px); /* Three equal columns */
-                margin: 5px;
+                width: 100%; /* Vertical layout for blue boxes */
+                height: 100px;
             }
 
             .footer {
-                width: calc(25% - 10px); /* Four equal columns */
-                margin: 5px;
+                width: 100%; /* Vertical layout for gray boxes */
+                height: 50px;
             }
         }
     </style>
