@@ -3,73 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Layout</title>
+    <title>HORTIVISION</title>
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: white;
+            padding: 0;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 10px;
-            gap: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 80%;
+            max-width: 1200px;
         }
 
-        .header {
-            background-color: lightgreen;
-            width: 100%;
+        .block {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             height: 100px;
-        }
-
-        .content {
-            background-color: turquoise;
-            width: calc(33.33% - 20px); /* Default horizontal layout */
-            height: 100px;
-        }
-
-        .footer {
-            background-color: lightgray;
-            width: calc(25% - 20px); /* Default horizontal layout */
-            height: 50px;
-        }
-
-        /* Layout for screens larger than 480px */
-        @media (min-width: 480px) {
-            .header {
-                width: 100%; /* Full-width header */
-            }
-
-            .content {
-                width: 100%; /* Vertical layout for blue boxes */
-                height: 100px;
-            }
-
-            .footer {
-                width: 100%; /* Vertical layout for gray boxes */
-                height: 50px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header Section -->
-        <div class="header"></div>
-
-        <!-- Content Sections -->
-        <div class="content"></div>
-        <div class="content"></div>
-        <div class="content"></div>
-
-        <!-- Footer Sections -->
-        <div class="footer"></div>
-        <div class="footer"></div>
-        <div class="footer"></div>
-        <div class="footer"></div>
+        <div class="block">Block 1</div>
+        <div class="block">Block 2</div>
+        <div class="block">Block 3</div>
+        <div class="block">Block 4</div>
+        <div class="block">Block 5</div>
+        <div class="block">Block 6</div>
     </div>
 </body>
 </html>
+
