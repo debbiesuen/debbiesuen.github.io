@@ -16,6 +16,8 @@
         }
 
         .container {
+            background-color: lightgreen;
+            padding: 20px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
@@ -30,6 +32,19 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             height: 100px;
         }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) { /* Medium screens: 3 blocks per row */
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) { /* Small screens: 1 block per row */
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -43,4 +58,3 @@
     </div>
 </body>
 </html>
-
