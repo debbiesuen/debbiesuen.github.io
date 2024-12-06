@@ -24,7 +24,7 @@
 
         .big-box {
             background-color: lightgreen;
-            height: 250px; /* Increased size */
+            height: 250px; /* Large size for the big box */
         }
 
         .turquoise-boxes {
@@ -35,7 +35,7 @@
 
         .turquoise-box {
             background-color: turquoise;
-            height: 200px; /* Increased size */
+            height: 200px; /* Large turquoise boxes */
         }
 
         .footer-boxes {
@@ -46,23 +46,29 @@
 
         .footer-box {
             background-color: lightgray;
-            height: 150px; /* Increased size */
+            height: 150px; /* Default footer height */
         }
 
         /* Responsive Styles */
         @media (max-width: 992px) {
             .turquoise-boxes {
-                grid-template-columns: repeat(2, 1fr); /* Two boxes per row */
+                grid-template-columns: repeat(2, 1fr); /* Two turquoise boxes per row */
             }
         }
 
         @media (max-width: 768px) {
             .turquoise-boxes {
-                grid-template-columns: 1fr; /* One box per row */
+                grid-template-columns: 1fr; /* One turquoise box per row */
             }
 
             .footer-boxes {
                 grid-template-columns: repeat(2, 1fr); /* Two footer boxes per row */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-box {
+                height: 120px; /* Reduced height for small screens */
             }
         }
     </style>
