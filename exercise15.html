@@ -3,58 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HORTIVISION</title>
+    <title>Responsive Layout</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             background: white;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
         }
 
         .container {
-            background-color: lightgreen;
-            padding: 20px;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
             gap: 20px;
             width: 80%;
             max-width: 1200px;
         }
 
-        .block {
-            background-color: #f0f0f0;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .big-box {
+            background-color: lightgreen;
+            height: 150px;
+        }
+
+        .turquoise-boxes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .turquoise-box {
+            background-color: turquoise;
+            height: 120px;
+        }
+
+        .footer-boxes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .footer-box {
+            background-color: gray;
             height: 100px;
         }
 
         /* Responsive Styles */
-        @media (max-width: 992px) { /* Medium screens: 3 blocks per row */
-            .container {
+        @media (max-width: 768px) {
+            .turquoise-boxes {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 768px) { /* Small screens: 1 block per row */
-            .container {
-                grid-template-columns: 1fr;
+        @media (max-width: 480px) {
+            .footer-boxes {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="block">Block 1</div>
-        <div class="block">Block 2</div>
-        <div class="block">Block 3</div>
-        <div class="block">Block 4</div>
-        <div class="block">Block 5</div>
-        <div class="block">Block 6</div>
+        <!-- Big Light Green Box -->
+        <div class="big-box"></div>
+
+        <!-- Turquoise Boxes -->
+        <div class="turquoise-boxes">
+            <div class="turquoise-box"></div>
+            <div class="turquoise-box"></div>
+            <div class="turquoise-box"></div>
+        </div>
+
+        <!-- Footer Gray Boxes -->
+        <div class="footer-boxes">
+            <div class="footer-box"></div>
+            <div class="footer-box"></div>
+            <div class="footer-box"></div>
+            <div class="footer-box"></div>
+        </div>
     </div>
 </body>
 </html>
